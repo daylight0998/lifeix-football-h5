@@ -7,6 +7,7 @@ app/*.js
 app/*/*.map
 app/*/*.js
 app/.map
+src/app/css/*.map
 *.log
 
 # compiled output

@@ -5,6 +5,9 @@
   },
   "apps": [
     {
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js"
+      ],
       "main": "src/main.ts",
       "tsconfig": "src/tsconfig.json",
       "mobile": false
@@ -25,7 +28,7 @@
   "defaults": {
     "prefix": "app",
     "sourceDir": "src",
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false,
     "lazyRoutePrefix": "+"
   }

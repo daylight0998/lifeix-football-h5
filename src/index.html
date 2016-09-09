@@ -2,26 +2,43 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>LifeixFootballH5</title>
+  <title>中国足球网</title>
+  <meta name="keywords" content="十二强赛,中国男足,中国女足,青少年足球,教练员,裁判员,教学培训,规则测试" />
+  <meta name="description" content="中国足球网和中国足球一起出发，弘扬中国足球文化，提供最全的十二强赛事介绍，以及教练、裁判、球员介绍，并且提供教练教学视频，测试视频，供业余爱好者学习足球" />
+  <meta name="author" content="立方网" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta name="apple-itunes-app" content="app-id=1112038310" />
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
   <base href="/">
 
   {{#unless environment.production}}
   <script src="/ember-cli-live-reload.js" type="text/javascript"></script>
   {{/unless}}
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="/app/css/public.css">
+
 </head>
 <body>
-  <app-root>Loading...</app-root>
-  
-    {{#each scripts.polyfills}}
-    <script src="{{.}}"></script>
-    {{/each}}
-    <script>
-      System.import('system-config.js').then(function () {
-        System.import('main');
-      }).catch(console.error.bind(console));
-    </script>
-  
+
+  <div class="header_con">
+    <a class="CF_logo" href="" title="中国足球网"> </a>
+    <span>中国足球网</span>
+  </div>
+
+  <app-root></app-root>
+
+  {{#each scripts.polyfills}}
+  <script src="{{.}}"></script>
+  {{/each}}
+  <script>
+    System.import('system-config.js').then(function () {
+      System.import('main');
+    }).catch(console.error.bind(console));
+  </script>
+
 </body>
 </html>
