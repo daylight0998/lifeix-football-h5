@@ -1,0 +1,97 @@
+<div class="per100_bg2">
+	<div class="video_width">
+		<div class="video_show">
+			<template [ngIf]="quizResult.currIndex>=0">
+				<template [ngIf]="quizResult.playend==false">
+					<template [ngIf]="currPage.video">
+						<video autoplay="" (ended)="videoPlayEnd()">
+							<source src="{{imgPrefix}}{{currPage.video.videoPath}}/HD" type="video/mp4">
+						</video>
+					</template>
+				</template>
+				<template [ngIf]="quizResult.playend==true">
+					<div class="box_2">
+						<div class="box_bt">
+							<span class="pre_title">题目-{{quizResult.currIndex+1}}</span>
+							<div class="pre_box">
+								<span class="pre_correct">
+									<span class="num_m">&nbsp;</span>
+									<span class="num">{{quizResult.successNum}}</span>
+								</span>
+								<span class="pre_error">
+									<span class="num_m">&nbsp;</span>
+									<span class="num">{{quizResult.errorNum}}</span>
+								</span>
+							</div>
+						</div>
+						<div class="box_answer">
+							<template [ngIf]="currPage.video">
+							<template [ngIf]="currPage.video.r1[0].image">
+								<ul class="img_list">
+									<li *ngFor="let item of currPage.video.r1">
+										<span><img src="{{imgPrefix}}{{item.image}}" /></span>
+										<a [class.mark_yes]="item.index==r1_index" [class.mark_no]="item.index!=r1_index" (click)="chooseOption('r1',item.right,item.index)" href="javascript:void(0);">&nbsp;</a>
+									</li>	
+								</ul>
+							</template>	
+							<template [ngIf]="!currPage.video.r1[0].image">
+								<ul class="choose_list">
+									<li *ngFor="let item of currPage.video.r1">
+										<a [class.mark_yes]="item.index==r1_index" [class.mark_no]="item.index!=r1_index" (click)="chooseOption('r1',item.right,item.index)" href="javascript:void(0);">&nbsp;</a>
+										<span>{{item.text}}</span>
+									</li>
+								</ul>
+							</template>
+							</template>
+						</div>
+						<div class="box_bt">
+							<a (click)="startQuiz(quizResult.currIndex+1)" href="javascript:void(0);">跳过这一题</a>
+						</div>
+					</div>
+				</template>
+			</template>
+			<template [ngIf]="quizResult.currIndex==-1">
+				<div class="box_2">
+					<div class="box_bt">
+						<span>测试</span>
+					</div>
+					<div *ngIf="currCat" class="box_info">
+						<p>{{currCat.cats[0].text}}</p>
+					</div>
+					<div class="box_bt">
+						<template [ngIf]="currCat&&currCat.cats&&currCat.cats.length>0">
+						<a *ngFor="let item of currCat.cats" (click)="preQuiz(item.id)" href="javascript:void(0);">{{item.name}}</a>
+						</template>
+					</div>
+				</div>
+			</template>	
+			<template [ngIf]="quizResult.currIndex==-2">
+				<div class="box_2">
+					<div class="box_bt">
+						<span>测试结果</span>
+					</div>
+					<div class="box_answer">
+						<ul class="result_s">
+							<li class="correct">
+								<span class="num_m">&nbsp;</span>
+								<span class="num">{{quizResult.successNum}}</span>
+							</li>
+							<li class="error">
+								<span class="num_m">&nbsp;</span>
+								<span class="num">{{quizResult.errorNum}}</span>
+							</li>
+						</ul>
+						<ul class="result_t">
+							<li>
+								{{quizResult.msg}}
+							</li>
+						</ul>
+					</div>
+					<div class="box_bt">
+						<a (click)="continueQuiz()" href="javascript:void(0);">继续挑战</a>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>

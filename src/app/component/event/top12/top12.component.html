@@ -1,0 +1,103 @@
+<div class="per100_bg">
+	<div class="con_width990">
+		<!-- 2018年世界杯预选赛亚洲区赛制方案 -->
+		<template [ngIf]="competition">
+			<div class="part_title">
+				<div class="bar_left">&nbsp;</div>
+				<div class="bar_border">
+					<div class="bar_middle">2018年世界杯预选赛亚洲区赛制方案</div>
+					<div class="bar_right">&nbsp;</div>
+					<div class="bar_other" style="display:none;">&nbsp;</div>
+				</div>
+			</div>
+			<div class="part_box rule" [innerHTML]="competition.rule"> </div>
+		</template>
+		<!-- 十二强赛程 -->
+		<div class="part_title">
+			<div class="bar_left">&nbsp;</div>
+			<div class="bar_border">
+				<div class="bar_middle">十二强赛程</div>
+				<div class="bar_right">&nbsp;</div>
+				<div class="bar_other"><a href="javascript:void(0);" [routerLink]="['Scoreboard']">赛事积分榜</a></div>
+			</div>
+		</div>
+		<div class="part_box">
+			<ul *ngIf="aTeams&&aTeams.length>0" class="flag_list">
+				<li class="group">A组</li>
+				<li *ngFor="let item of aTeams">
+					<span><img src="{{prefixImg}}{{item.teamInfo.flag}}" /></span>
+					<b>{{item.teamInfo.name}}</b>
+				</li>
+			</ul>
+			<ul *ngIf="bTeams&&bTeams.length>0" class="flag_list">
+				<li class="group">B组</li>
+				<li *ngFor="let item of bTeams">
+					<span><img src="{{prefixImg}}{{item.teamInfo.flag}}" /></span>
+					<b>{{item.teamInfo.name}}</b>
+				</li>
+			</ul>
+			<ul class="form_list2">
+				<li class="form_header1">
+					<span class="w1">&nbsp;</span>
+					<span class="w2">&nbsp;</span>
+					<span class="w7">A组赛程</span>
+					<span class="w8">B组赛程</span>
+				</li>
+				<li class="form_header">
+					<span class="w1">轮次</span>
+					<span class="w2">日期</span>
+					<span class="w3">时间</span>
+					<span class="w4">对阵</span>
+					<span class="w5">时间</span>
+					<span class="w6">对阵</span>
+				</li>
+				<template [ngIf]="matchStages&&matchStages.length>0">
+				<template ngFor let-item [ngForOf]="matchStages">
+					<template [ngIf]="item.matchGroups&&item.matchGroups.length>0">
+						<li class="form_space">
+							<div class="wx">{{item.stage}}</div>
+						</li>
+					<template ngFor let-group [ngForOf]="item.matchGroups" let-gIndex="index">
+						<li class="form_boby">
+							<span class="w1"><template [ngIf]="gIndex==0">{{item.stage}}</template>&nbsp;</span>
+							<span class="w2"><template [ngIf]="gIndex==0">{{item.startdate|date:'yyyy'}}年{{item.startdate|date:'M'}}月{{item.startdate|date:'d'}}日</template>&nbsp;</span>
+							<span class="w3">
+							<template [ngIf]="group.amatch&&group.amatch.startTime">
+								{{group.amatch.startTime|df:'HH:mm'}}
+							</template>
+							&nbsp;
+							</span>
+							<template [ngIf]="group.amatch.hostTeam.teamInfo.id==1||group.amatch.awayTeam.teamInfo.id==1">
+							<a [routerLink]="['Match12',{id:group.amatch.id}]">
+							<span class="w4 cn">{{group.amatch.hostTeam.teamInfo.name}} VS {{group.amatch.awayTeam.teamInfo.name}}
+							</span>
+							</a>
+							</template>
+							<template [ngIf]="group.amatch.hostTeam.teamInfo.id!=1&&group.amatch.awayTeam.teamInfo.id!=1">
+							<span class="w4">{{group.amatch.hostTeam.teamInfo.name}} VS {{group.amatch.awayTeam.teamInfo.name}}</span>
+							</template>
+							<span class="w5">
+							<template [ngIf]="group.bmatch&&group.bmatch.startTime">
+								{{group.bmatch.startTime|df:'HH:mm'}}
+							</template>
+							&nbsp;</span>
+							<span class="w6">
+								<template [ngIf]="group.bmatch&&group.bmatch.hostTeam">
+									{{group.bmatch.hostTeam.teamInfo.name}} 
+								</template>
+								VS 
+								<template [ngIf]="group.bmatch&&group.bmatch.awayTeam">
+									{{group.bmatch.awayTeam.teamInfo.name}} 
+								</template>
+							</span>
+						</li>
+					</template>
+					</template>
+				</template>
+				</template>
+
+			</ul>
+
+		</div>
+	</div>
+</div>

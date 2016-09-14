@@ -1,5 +1,3 @@
-"use strict";
-
 // SystemJS configuration file, see links for more information
 // https://github.com/systemjs/systemjs
 // https://github.com/systemjs/systemjs/blob/master/docs/config-api.md
@@ -24,18 +22,32 @@ const barrels: string[] = [
   '@angular/core',
   '@angular/common',
   '@angular/compiler',
-  '@angular/forms',
   '@angular/http',
   '@angular/router',
+  '@angular/router-deprecated',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
-
   // Thirdparty barrels.
   'rxjs',
-
+  'css-animator',
+  //'filesaver.js',
   // App specific barrels.
   'app',
   'app/shared',
+  'app/js',
+  'app/component/home',
+  'app/component/player',
+  'app/component/football',
+  'app/component/news',
+  'app/component/detail',
+  'app/component/event',
+  //'app/component/event/top12',
+  'app/component/elearing',
+  'app/component/etest',
+  'app/component/yong',
+  'app/component/about',
+  'app/component/download',
+  'app/component/user',
   /** @cli-barrel */
 ];
 
@@ -52,6 +64,8 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
+    'css-animator': 'vendor/css-animator',
+    //'filesaver':'vendor/filesaver.js/FileSaver.min.js',
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages

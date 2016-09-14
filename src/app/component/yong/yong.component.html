@@ -1,0 +1,19 @@
+<div class="per100_bg">
+	<div class="con_width990">
+		<!-- 新闻头条 -->
+		<div class="part_title">
+			<div class="bar_left">&nbsp;</div>
+			<div class="bar_border">
+				<div class="bar_middle">新闻头条</div>
+				<div class="bar_right">&nbsp;</div>
+				<div class="bar_other" style="display:none;">&nbsp;</div>
+			</div>
+		</div>
+		<template [ngIf]="category">
+			<cf-sub-top-news [category]="category"></cf-sub-top-news>
+		</template>
+		<template [ngIf]="category">
+			<cf-news-list [category]="category"></cf-news-list>	
+		</template>
+	</div>
+</div>

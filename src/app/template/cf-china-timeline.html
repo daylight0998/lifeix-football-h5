@@ -1,0 +1,82 @@
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">十二强赛中国队时间轴</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<a href="javascript:void(0);" [routerLink]="['Top12']">赛事介绍</a>
+			<a href="javascript:void(0);" [routerLink]="['Scoreboard']">赛事积分榜</a>
+		</div>
+		<div #cf_countdown (window:scroll)="onScroll($event)" *ngIf="until" (click)="toggleAD()" class="timing_2"><span>距{{currMatcher.hostTeam.teamInfo.name}}VS{{currMatcher.awayTeam.teamInfo.name}}还有</span><b>{{until.d}}</b><span>天</span><b>{{until.h}}</b><span>小时</span><b>{{until.m}}</b><span>分</span><b>{{until.s}}</b><span>秒</span></div>
+	</div>
+</div>
+<div class="part_box timeline_bg" [style.background-image]="'url('+courtImages+')'">
+	<div class="bg_filter">
+		<div class="part_big">
+			<template [ngIf]="currMatcher">
+			<ul class="flag_box_l">
+				<li class="flag_box"><img alt="{{selectMatcher.hostTeam.teamInfo.name}}" src="{{prefixImg}}{{selectMatcher.hostTeam.teamInfo.flag}}" /></li>
+				<li class="name_box">{{selectMatcher.hostTeam.teamInfo.name}}</li>
+			</ul>
+			<div class="vs">
+			<b *ngIf="selectMatcher.state>0">{{selectMatcher.hostScore}}&nbsp;:&nbsp;{{selectMatcher.awayScore}}</b> 
+			</div>
+			<ul class="flag_box_r">
+				<li class="flag_box"><img alt="{{selectMatcher.awayTeam.teamInfo.name}}" src="{{prefixImg}}{{selectMatcher.awayTeam.teamInfo.flag}}" /></li>
+				<li class="name_box">{{selectMatcher.awayTeam.teamInfo.name}}</li>
+			</ul>
+			</template>
+		</div>
+		<template [ngIf]="selectMatcher">
+			<div class="detail">
+				<b>
+					<template [ngIf]="selectMatcher.court">
+						{{selectMatcher.court.name}}
+					</template>
+				</b><br />
+				<span>
+					{{selectMatcher.startDate|df:'yyyy年MM月dd日'}}
+					<template [ngIf]="selectMatcher.startTime">
+						{{selectMatcher.startTime|df:'hh:mm'}}
+					</template>
+				</span><br />
+
+				<a *ngIf="zhibo&&zhibo.status>0&&zhibo.status<3&&zhibo.matchId&&selectMatcher&&zhibo.matchId==selectMatcher.id" [routerLink]="['Match12',{id:zhibo.matchId}]">直播比赛</a>
+			</div>
+		</template>
+		<ul class="time_list">
+			<template [ngIf]="matchers&&matchers.length>0">
+			<template ngFor let-item [ngForOf]="matchers" let-i="index">
+				<li *ngIf="i==0||i==5" class="year">
+					<span>{{item.startDate|df:'yyyy'}}年</span>
+					<span><b></b></span>
+				</li>
+				<li class="month" (mouseover)="swichMatch(item.id)">
+					<a [routerLink]="['Match12',{id:item.id}]">
+					<span>
+						<img alt="{{item.hostTeam.teamInfo.name}}" src="{{prefixImg}}{{item.hostTeam.teamInfo.flag}}" />
+						<img alt="{{item.awayTeam.teamInfo.name}}" src="{{prefixImg}}{{item.awayTeam.teamInfo.flag}}" />
+					</span>
+					<span class="point_b"><b></b></span>
+					<span>{{item.startDate|df:'M月d日'}}</span>
+					</a>
+				</li>
+			</template>
+			</template>
+		</ul>
+	</div>
+	<div @cfcd="cfcdAnimate" *ngIf="until" class="timing">
+		<div>距<span class="vs_span">{{currMatcher.hostTeam.teamInfo.name}}</span><b>VS</b><span class="vs_span">{{currMatcher.awayTeam.teamInfo.name}}</span>还有</div>
+		<div>
+			<template [ngIf]="until.d>0"><span>{{until.d}}</span><b>天</b></template>
+			<template [ngIf]="until.h>0"><span>{{until.h}}</span><b>小时</b></template>
+			<template [ngIf]="until.m>0"><span>{{until.m}}</span><b>分</b></template>
+			<span>{{until.s}}</span><b>秒</b>
+		</div>
+		<div>北京时间{{currMatcher.startDate|df:'yyyy年MM月dd日'}}
+			<template [ngIf]="currMatcher.startTime">
+				{{currMatcher.startTime|df:'hh:mm'}}
+			</template>
+		</div>
+	</div>
+</div>

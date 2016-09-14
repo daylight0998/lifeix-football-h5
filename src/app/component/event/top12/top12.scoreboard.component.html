@@ -1,0 +1,110 @@
+<div class="per100_bg">
+    <div class="con_width990">
+        <!-- A组积分榜 -->
+        <div class="part_title">
+            <div class="bar_left">&nbsp;</div>
+            <div class="bar_border">
+                <div class="bar_middle">十二强赛A组积分榜</div>
+                <div class="bar_right">&nbsp;</div>
+                <div class="bar_other" style="display:none;">&nbsp;</div>
+            </div>
+        </div>
+        <div class="part_box">
+            <ul class="sform_list">
+                <li class="form_header">
+                    <span class="s1">排名</span>
+                    <span class="s2">球队</span>
+                    <span class="s1">胜</span>
+                    <span class="s1">平</span>
+                    <span class="s1">负</span>
+                    <span class="s1">进球</span>
+                    <span class="s1">失球</span>
+                    <span class="s1">净胜球</span>
+                    <span class="s1">积分</span>
+                </li>
+                <template [ngIf]="aGroup&&aGroup.teams">
+
+                <li *ngFor="let item of aGroup.teams;let i=index" class="form_body">
+                    <span class="s1">{{i+1}}</span>
+                    <span class="s2">
+                        <b class="sflag"><img src="{{prefixImg}}{{item.teamInfo.flag}}" /></b>
+                        <b class="sname">{{item.teamInfo.name}}</b>
+                    </span>
+                    <span class="s1">{{item.winNum}}</span>
+                    <span class="s1">{{item.drawNum}}</span>
+                    <span class="s1">{{item.lostNum}}</span>
+                    <span class="s1">{{item.gf}}</span>
+                    <span class="s1">{{item.ga}}</span>
+                    <span class="s1">{{item.gf-item.ga}}</span>
+                    <span class="s1">{{item.pts}}</span>
+                </li>
+                </template>
+
+            </ul>
+        </div>
+        <!-- B组积分榜 -->
+        <div class="part_title">
+            <div class="bar_left">&nbsp;</div>
+            <div class="bar_border">
+                <div class="bar_middle">十二强赛B组积分榜</div>
+                <div class="bar_right">&nbsp;</div>
+                <div class="bar_other" style="display:none;">&nbsp;</div>
+            </div>
+        </div>
+        <div class="part_box">
+            <ul class="sform_list">
+                <li class="form_header">
+                    <span class="s1">排名</span>
+                    <span class="s2">球队</span>
+                    <span class="s1">胜</span>
+                    <span class="s1">平</span>
+                    <span class="s1">负</span>
+                    <span class="s1">进球</span>
+                    <span class="s1">失球</span>
+                    <span class="s1">净胜球</span>
+                    <span class="s1">积分</span>
+                </li>
+                <template [ngIf]="bGroup&&bGroup.teams">
+
+                <li *ngFor="let item of bGroup.teams;let i=index" class="form_body">
+                    <span class="s1">{{i+1}}</span>
+                    <span class="s2">
+                        <b class="sflag"><img src="{{prefixImg}}{{item.teamInfo.flag}}" /></b>
+                        <b class="sname">{{item.teamInfo.name}}</b>
+                    </span>
+                    <span class="s1">{{item.winNum}}</span>
+                    <span class="s1">{{item.drawNum}}</span>
+                    <span class="s1">{{item.lostNum}}</span>
+                    <span class="s1">{{item.gf}}</span>
+                    <span class="s1">{{item.ga}}</span>
+                    <span class="s1">{{item.gf-item.ga}}</span>
+                    <span class="s1">{{item.pts}}</span>
+                </li>
+                </template>
+            </ul>
+        </div>
+        <!-- 积分规则 -->
+        <div class="part_title">
+            <div class="bar_left">&nbsp;</div>
+            <div class="bar_border">
+                <div class="bar_middle">积分规则说明</div>
+                <div class="bar_right">&nbsp;</div>
+                <div class="bar_other"><a href="javascript:void(0);" [routerLink]="['Top12']">赛事介绍</a></div>
+            </div>
+        </div>
+        <div class="part_box rule">
+            <div class="shuoming">
+                <p>a）组内积分多的队名次列前</p >
+                <p>b）积分相同时，净胜球数多的队名次列前</p >
+                <p>c）积分、净胜球数相同时，进球数多的队名次列前</p >
+                <p>若两支或两支以上球队积分、净胜球数、进球数均相同时，则按以下顺序决定名次：</p >
+                <p>d）相互比赛积分多者，名次列前；</p >
+                <p>e）相互比赛净胜球多者，名次列前；</p >
+                <p>f）相互比赛进球数多者，名次列前；</p >
+                <p>g）相互比赛客场进球数多者，名次列前。</p >
+                <p>注：以上内容节选自<a href="http://resources.fifa.com/mm/document/tournament/competition/02/59/22/68/regulationsfwc2018russia_short_e_v210415_neutral.pdf">REGULATIONS-2018 FIFA World Cup Russia</a></p >
+                
+            </div>
+        </div>
+    </div>
+</div>

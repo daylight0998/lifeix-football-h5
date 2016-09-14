@@ -1,0 +1,274 @@
+<div class="per100_bg">
+	<div class="con_width990">
+		<!-- 十二强赛中国队时间轴 -->
+		<div class="part_title">
+			<div class="bar_left">&nbsp;</div>
+			<div class="bar_border">
+				<div class="bar_middle">
+					<template [ngIf]="currMatch">{{currMatch.hostTeam.teamInfo.name}} VS {{currMatch.awayTeam.teamInfo.name}}</template>
+				</div>
+				<div class="bar_right">&nbsp;</div>
+				<div class="bar_other">
+					<a href="javascript:void(0);" [routerLink]="['Top12']">十二强赛事介绍</a>
+					<a href="javascript:void(0);" [routerLink]="['Scoreboard']">十二强赛事积分榜</a>
+				</div>
+			</div>
+		</div>
+		<div *ngIf="zhibo&&zhibo.status>0&&zhibo.status<3" class="part_box" style="height: 480px">
+			<iframe width="100%" height="480px" style="border: 0px;" [src]="zhiboUrl"></iframe>
+		</div>
+		<div class="part_box timeline_bg" [style.background-image]="'url('+courtImages+')'">
+			<div class="bg_filter">
+			<ul class="time_list margin">
+				<template [ngIf]="matchers&&matchers.length>0">
+				<template ngFor let-item [ngForOf]="matchers" let-i="index">
+
+					<li *ngIf="i==0||i==5" class="year">
+						<span>{{item.startDate|df:'yyyy'}}年</span>
+						<span><b></b></span>
+					</li>
+					<li class="month">
+						<a [routerLink]="['Match12',{id:item.id}]">
+						<span>
+							<img src="{{prefixImg}}{{item.hostTeam.teamInfo.flag}}" />
+							<img src="{{prefixImg}}{{item.awayTeam.teamInfo.flag}}" />
+						</span>
+						<span class="point_b"><b></b></span>
+						<span>{{item.startDate|df:'M月d日'}}</span>
+						</a>
+					</li>
+				</template>
+				</template>
+			</ul>
+			<ul class="match_info">
+				<template [ngIf]="currMatch">
+					<li class="info_title">
+					<span><b>(主队)</b>&nbsp;{{currMatch.hostTeam.teamInfo.name}} VS {{currMatch.awayTeam.teamInfo.name}}&nbsp;<b>(客队)</b></span>
+					</li>
+					<li>
+						<span class="border_r">
+						城市:<template [ngIf]="currMatch.court">{{currMatch.court.position}}&nbsp;</template>
+						</span>
+						<span class="border_r">
+						体育场:<template [ngIf]="currMatch.court">{{currMatch.court.name}}&nbsp;</template>
+						</span>
+						
+						<span class="border_r">日期:{{currMatch.startDate|df:'yyyy年MM月dd日'}}&nbsp;</span>
+						<span>时间:
+						<template [ngIf]="currMatch&&currMatch.startTime">{{currMatch.startTime|df:'HH:mm'}}</template>
+						&nbsp;</span>
+					</li>
+				</template>
+				<li>
+					<div class="part_1">
+						<span class="sp1">裁判员:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.chiefReferee">
+								{{currMatch.chiefReferee.name}}<br />({{currMatch.chiefReferee.country}})
+							</template>	
+							<template [ngIf]="currMatch&&!currMatch.chiefReferee">
+								--
+							</template>	
+						</span>
+						<span class="sp1">第四官员:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.fourthReferee">
+								{{currMatch.fourthReferee.name}}<br />({{currMatch.fourthReferee.country}})
+							</template>	
+							<template [ngIf]="currMatch&&!currMatch.fourthReferee">
+								--
+							</template>	
+						</span>
+					</div>
+					<div class="part_2">
+						<span class="sp1">第一助理:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.sideReferees&&currMatch.sideReferees[0]">
+								{{currMatch.sideReferees[0].name}}<br />({{currMatch.sideReferees[0].country}})
+							</template>	
+							<template [ngIf]="currMatch&&(!currMatch.sideReferees||!currMatch.sideReferees[0])">
+								--
+							</template>		
+
+						</span>
+						<span class="sp1">裁判监督:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.cpjd">
+								{{currMatch.cpjd.name}}<br />
+							</template>	
+							<template [ngIf]="currMatch&&!currMatch.cpjd">
+								--
+							</template>	
+						</span>
+					</div>
+					<div class="part_2">
+						<span class="sp1">第二助理:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.sideReferees&&currMatch.sideReferees[1]">
+								{{currMatch.sideReferees[1].name}}<br />({{currMatch.sideReferees[1].country}})
+							</template>	
+							<template [ngIf]="currMatch&&(!currMatch.sideReferees||!currMatch.sideReferees[1])">
+								--
+							</template>		
+						</span>
+						<span class="sp1">比赛监督:</span>
+						<span class="sp2">
+							<template [ngIf]="currMatch&&currMatch.bsjd">
+								{{currMatch.bsjd.name}}<br />
+							</template>	
+							<template [ngIf]="currMatch&&!currMatch.bsjd">
+								--
+							</template>	
+						</span>
+					</div>
+				</li>
+			</ul>
+			</div>
+		</div>
+		<!-- 主队 -->
+		<div class="part_box">
+			<!-- 主队 -->
+			<ul class="team_info leftpart">
+				<template [ngIf]="currMatch">
+				<li class="team_title"><span><img src="{{prefixImg}}{{currMatch.hostTeam.teamInfo.flag}}" /></span><b>{{currMatch.hostTeam.teamInfo.name}}队名单</b></li>
+				</template>
+				<li>
+					<span class="spa1 border_r">主教练</span>
+					<span class="spa2">
+						<template [ngIf]="currMatch&&currMatch.hostTeam&&currMatch.hostTeam.chiefCoach">
+							{{currMatch.hostTeam.chiefCoach.name}}
+						</template>
+					</span>
+				</li>
+				<li>
+					<span class="spa1 border_r">领队</span>
+					<span class="spa2">
+						<template [ngIf]="currMatch&&currMatch.hostTeam&&currMatch.hostTeam.teamLeader">
+							{{currMatch.hostTeam.teamLeader.name}}
+						</template>
+					</span>
+				</li>
+				<li>
+					<span class="spa1 border_r">服装颜色</span>
+					<template [ngIf]="currMatch&&currMatch.hostTeam&&currMatch.hostTeam.jersey">
+						<span class="spa6">上衣:</span><span class="spanimg" style.background-color="{{currMatch.hostTeam.jersey.jacket}}"><img src="app/images/jersey_coat.png" /></span>
+						<span class="spa6">短裤:</span><span class="spanimg" style.background-color="{{currMatch.hostTeam.jersey.shorts}}"><img src="app/images/jersey_pants.png" /></span>
+						<span class="spa6">球袜:</span><span class="spanimg" style.background-color="{{currMatch.hostTeam.jersey.socks}}"><img src="app/images/jersey_sock.png" /></span>
+					</template>
+				</li>
+				<li>
+					<span class="spa3 border_r">号码</span>
+					<span class="spa4 border_r">姓名</span>
+					<span class="spa5">备注&nbsp;</span>
+				</li>
+				<li class="space_bar">首发</li>
+				<template [ngIf]="currMatch&&currMatch.hostTeam&&currMatch.hostTeam.firstPlayers">
+					<li *ngFor="let item of currMatch.hostTeam.firstPlayers">
+						<span class="spa3 border_r">{{item.jerseysNum}}&nbsp;</span>
+						<span class="spa4 border_r">{{item.name}}&nbsp;</span>
+						<span class="spa5">
+							<template [ngIf]="item.isCaptain">队长</template>
+							<template [ngIf]="item.position=='守门员'">{{item.position}}</template>&nbsp;
+						</span>
+					</li>
+				</template>
+				<template [ngIf]="!currMatch||!currMatch.hostTeam||!currMatch.hostTeam.firstPlayers||currMatch.hostTeam.firstPlayers.length<1">
+					<li *ngFor="let it of emptyPlayer">
+						<span class="spa3 border_r">&nbsp;</span>
+						<span class="spa4 border_r">&nbsp;</span>
+						<span class="spa5">&nbsp;</span>
+					</li>
+				</template>
+				<li class="space_bar">替补</li>
+				<template [ngIf]="currMatch&&currMatch.hostTeam&&currMatch.hostTeam.substitutionPlayers">
+					<li *ngFor="let item of currMatch.hostTeam.substitutionPlayers">
+						<span class="spa3 border_r">{{item.jerseysNum}}&nbsp;</span>
+						<span class="spa4 border_r">{{item.name}}&nbsp;</span>
+						<span class="spa5">
+							<template [ngIf]="item.isCaptain">队长</template>
+							<template [ngIf]="item.position=='守门员'">{{item.position}}</template>&nbsp;
+						</span>
+					</li>
+				</template>
+				<template [ngIf]="!currMatch||!currMatch.hostTeam||!currMatch.hostTeam.substitutionPlayers||currMatch.hostTeam.substitutionPlayers.length<1">
+					<li *ngFor="let it of emptySecPlayer">
+						<span class="spa3 border_r">&nbsp;</span>
+						<span class="spa4 border_r">&nbsp;</span>
+						<span class="spa5">&nbsp;</span>
+					</li>
+				</template>
+			</ul>
+			<!-- 客队 -->
+			<ul class="team_info rightpart">
+				<template [ngIf]="currMatch">
+				<li class="team_title"><span><img src="{{prefixImg}}{{currMatch.awayTeam.teamInfo.flag}}" /></span><b>{{currMatch.awayTeam.teamInfo.name}}队名单</b></li>
+				</template>
+				<li>
+					<span class="spa1 border_r">主教练</span>
+					<span class="spa2">
+						<template [ngIf]="currMatch&&currMatch.awayTeam&&currMatch.awayTeam.chiefCoach">
+							{{currMatch.awayTeam.chiefCoach.name}}
+						</template>
+					</span>
+				</li>
+				<li>
+					<span class="spa1 border_r">领队</span>
+					<span class="spa2">
+						<template [ngIf]="currMatch&&currMatch.awayTeam&&currMatch.awayTeam.teamLeader">
+							{{currMatch.awayTeam.teamLeader.name}}
+						</template>
+					</span>
+				</li>
+				<li>
+					<span class="spa1 border_r">服装颜色</span>
+					<template [ngIf]="currMatch&&currMatch.awayTeam&&currMatch.awayTeam.jersey">
+						<span class="spa6">上衣:</span><span class="spanimg" style.background-color="{{currMatch.awayTeam.jersey.jacket}}"><img src="app/images/jersey_coat.png" /></span>
+						<span class="spa6">短裤:</span><span class="spanimg" style.background-color="{{currMatch.awayTeam.jersey.shorts}}"><img src="app/images/jersey_pants.png" /></span>
+						<span class="spa6">球袜:</span><span class="spanimg" style.background-color="{{currMatch.awayTeam.jersey.socks}}"><img src="app/images/jersey_sock.png" /></span>
+					</template>
+				</li>
+				<li>
+					<span class="spa3 border_r">号码</span>
+					<span class="spa4 border_r">姓名</span>
+					<span class="spa5">备注&nbsp;</span>
+				</li>
+				<li class="space_bar">首发</li>
+				<template [ngIf]="currMatch&&currMatch.awayTeam&&currMatch.awayTeam.firstPlayers">
+					<li *ngFor="let item of currMatch.awayTeam.firstPlayers">
+						<span class="spa3 border_r">{{item.jerseysNum}}&nbsp;</span>
+						<span class="spa4 border_r">{{item.name}}&nbsp;</span>
+						<span class="spa5">
+							<template [ngIf]="item.isCaptain">队长</template>
+							<template [ngIf]="item.position=='守门员'">{{item.position}}</template>&nbsp;
+						</span>
+					</li>
+				</template>
+				<template [ngIf]="!currMatch||!currMatch.awayTeam||!currMatch.awayTeam.firstPlayers||currMatch.awayTeam.firstPlayers.length<1">
+					<li *ngFor="let it of emptyPlayer">
+						<span class="spa3 border_r">&nbsp;</span>
+						<span class="spa4 border_r">&nbsp;</span>
+						<span class="spa5">&nbsp;</span>
+					</li>
+				</template>
+				<li class="space_bar">替补</li>
+				<template [ngIf]="currMatch&&currMatch.awayTeam&&currMatch.awayTeam.substitutionPlayers">
+					<li *ngFor="let item of currMatch.awayTeam.substitutionPlayers">
+						<span class="spa3 border_r">{{item.jerseysNum}}&nbsp;</span>
+						<span class="spa4 border_r">{{item.name}}&nbsp;</span>
+						<span class="spa5">
+							<template [ngIf]="item.isCaptain">队长</template>
+							<template [ngIf]="item.position=='守门员'">{{item.position}}</template>&nbsp;
+						</span>
+					</li>
+				</template>
+				<template [ngIf]="!currMatch||!currMatch.awayTeam||!currMatch.awayTeam.substitutionPlayers||currMatch.awayTeam.substitutionPlayers.length<1">
+					<li *ngFor="let it of emptySecPlayer">
+						<span class="spa3 border_r">&nbsp;</span>
+						<span class="spa4 border_r">&nbsp;</span>
+						<span class="spa5">&nbsp;</span>
+					</li>
+				</template>
+			</ul>
+		</div>
+	</div>
+</div>

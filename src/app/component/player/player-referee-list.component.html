@@ -1,0 +1,100 @@
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">FIFA裁判员</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<template ngFor let-item [ngForOf]="refCatTops" let-i="index">
+				<a [class.text_here]="item.topName==fifaSelectCat" (click)="chagePlayer(item.topName,'fifa')">{{item.topName}}</a>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="part_box">
+<template [ngIf]="fifaCat&&fifaCat.length>0">
+	<template ngFor let-item [ngForOf]="fifaCat" let-i="index" >
+		<div class="subtitle"><span>{{item.categoryName}}</span></div>
+		<div class="member_list">
+			<div *ngFor="let referee of item.referees" class="referee_box" (mouseenter)="displayLike('referee',referee.id)" (mouseleave)="hiddenLike('referee',referee.id)">
+				<span class="user_header">
+					<template [ngIf]="!referee.avatar&&referee.sex=='男'">
+						<img  alt="{{referee.name}}" src="app/images/defaul_male.jpg" />
+					</template>
+					<template [ngIf]="!referee.avatar&&referee.sex=='女'">
+						<img  alt="{{referee.name}}" src="app/images/defaul_female.jpg" />
+					</template>
+					<template [ngIf]="referee.avatar">
+						<img alt="{{referee.name}}" src="{{prefixImg}}{{referee.avatar}}?imageView/1/w/190/h/253" />
+					</template>
+				</span>
+				<ul>
+					<li>姓名:{{referee.name}}</li>
+					<li>生日:{{referee.birthday | date:'y-M-d'}}</li>
+					<li>协会:{{referee.association}}</li>
+					<li>成为国际裁判:{{referee.sinceInternational}}年</li>
+					<li>国际A级赛事场次:{{referee.fifaTopANum}}</li>
+					<li>中国顶级联赛场次:{{referee.tipLeagueNum}}</li>
+				</ul>
+				<div class="like_box" [hidden]="showLike('referee',referee.id)">
+					<template [ngIf]="!nLikes['referee_'+referee.id]||!nLikes['referee_'+referee.id].like">
+					<span (click)="addLike($event,'referee',referee.id)" class="span_like"></span>
+					</template>
+					<span *ngIf="nLikes['referee_'+referee.id]" class="like_num">
+						{{nLikes['referee_'+referee.id].likeNum}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</template>
+</template>
+</div>
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">联赛裁判员</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<template ngFor let-item [ngForOf]="matchCats" let-i="index">
+				<a [class.text_here]="item==matchSelectCat" (click)="chagePlayer(item,'match')">{{item}}</a>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="part_box">
+<template [ngIf]="matchCat&&matchCat.length>0">
+	<template ngFor let-item [ngForOf]="matchCat" let-i="index" >
+		<div class="subtitle"><span>{{item.categoryName}}</span></div>
+		<div class="member_list">
+			<div *ngFor="let referee of item.referees" class="referee_box" (mouseenter)="displayLike('referee',referee.id)" (mouseleave)="hiddenLike('referee',referee.id)">
+				<span class="user_header">
+					<template [ngIf]="!referee.avatar&&referee.sex=='男'">
+						<img alt="{{referee.name}}" src="app/images/defaul_male.jpg" />
+					</template>
+					<template [ngIf]="!referee.avatar&&referee.sex=='女'">
+						<img alt="{{referee.name}}" src="app/images/defaul_female.jpg" />
+					</template>
+					<template [ngIf]="referee.avatar">
+						<img alt="{{referee.name}}" src="{{prefixImg}}{{referee.avatar}}?imageView/1/w/190/h/253" />
+					</template>
+				</span>
+				<ul>
+					<li>姓名:{{referee.name}}</li>
+					<li>生日:{{referee.birthday | date:'y-M-d'}}</li>
+					<li>协会:{{referee.association}}</li>
+					<li>成为国际裁判:{{referee.sinceInternational}}年</li>
+					<li>国际A级赛事场次:{{referee.fifaTopANum}}</li>
+					<li>中国顶级联赛场次:{{referee.tipLeagueNum}}</li>
+				</ul>
+				<div class="like_box" [hidden]="showLike('referee',referee.id)">
+					<template [ngIf]="!nLikes['referee_'+referee.id]||!nLikes['referee_'+referee.id].like">
+					<span (click)="addLike($event,'referee',referee.id)" class="span_like"></span>
+					</template>
+					<span *ngIf="nLikes['referee_'+referee.id]" class="like_num">
+						{{nLikes['referee_'+referee.id].likeNum}}
+					</span>
+				</div>
+			</div>
+		</div>
+	</template>
+</template>
+</div>

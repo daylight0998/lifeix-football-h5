@@ -1,0 +1,70 @@
+<div class="slideshow">
+	<div id="carousel-news" class="carousel slide" data-ride="carousel">
+	  <ol class="carousel-indicators">
+		<template ngFor let-item [ngForOf]="posts" let-i="index">
+			<template [ngIf]="i==0">
+				<li data-target="#carousel-news" data-slide-to="0" class="active"></li>
+			</template>
+			<template [ngIf]="i>0">
+				<li data-target="#carousel-news" [attr.data-slide-to]="i"></li>
+			</template>
+		</template>
+	  </ol>
+	  <div class="carousel-inner" role="listbox">
+		<template ngFor let-item [ngForOf]="posts" let-i="index">
+			<template [ngIf]="i==0">
+				<div class="item active">
+					<template [ngIf]="!item.linkMap">
+					<a [routerLink]="['Detail',{id:item.id}]" target="_blank">
+						<img alt="{{item.title}}" src="{{item.image}}" height="495px" data-holder-rendered="true" />
+						<div class="slideshow_title">{{item.title}}</div>
+					</a>
+					</template>
+					<template [ngIf]="item.linkMap">
+					<div [ngSwitch]="item.linkMap.linkType">
+						<a *ngSwitchCase="'match'" [routerLink]="['Match12',{id:item.linkMap.matchId}]" target="_blank">
+							<img alt="{{item.title}}" src="{{item.image}}" height="495px"  data-holder-rendered="true" />
+							<div class="slideshow_title">{{item.title}}</div>
+						</a>
+						<a *ngSwithDefault [routerLink]="['Detail',{id:item.id}]" target="_blank">
+							<img alt="{{item.title}}" src="{{item.image}}" height="495px"  data-holder-rendered="true" />
+							<div class="slideshow_title">{{item.title}}</div>
+						</a>
+					</div>	
+					</template>
+				</div>
+			</template>
+				<template [ngIf]="i>0">
+				<div class="item">
+					<template [ngIf]="!item.linkMap">
+					<a [routerLink]="['Detail',{id:item.id}]" target="_blank">
+						<img alt="{{item.title}}" src="{{item.image}}" height="495px"  data-holder-rendered="true" />
+						<div class="slideshow_title">{{item.title}}</div>
+					</a>
+					</template>
+					<template [ngIf]="item.linkMap">
+					<div [ngSwitch]="item.linkMap.linkType">
+						<a *ngSwitchCase="'match'" [routerLink]="['Match12',{id:item.linkMap.matchId}]" target="_blank">
+							<img alt="{{item.title}}" src="{{item.image}}" height="495px"  data-holder-rendered="true" />
+							<div class="slideshow_title">{{item.title}}</div>
+						</a>
+						<a *ngSwithDefault [routerLink]="['Detail',{id:item.id}]" target="_blank">
+							<img alt="{{item.title}}" src="{{item.image}}" height="495px"  data-holder-rendered="true" />
+							<div class="slideshow_title">{{item.title}}</div>
+						</a>
+					</div>	
+					</template>
+				</div>
+			</template>
+		</template>
+	  </div>
+	  <a class="left carousel-control" href="#carousel-news" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#carousel-news" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	  </a>
+	</div>
+</div>

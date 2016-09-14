@@ -1,0 +1,90 @@
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">中国男足教练</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<template [ngIf]="maleCoachCats&&maleCoachCats.length>0">
+				<template ngFor let-item [ngForOf]="maleCoachCats" let-i="index">
+					<a *ngIf="item.coaches&&item.coaches.length>0" [class.text_here]="mCatName==item.categoryName" (click)="chagePlayer(item.categoryName,'m')" href="javascript:void(0);">{{item.categoryName}}</a>
+					<a *ngIf="!item.coaches||item.coaches.length<1" class="text_empty" href="javascript:void(0);">{{item.categoryName}}</a>
+				</template>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="part_box">
+	<template [ngIf]="maleCoachList&&maleCoachList.length>0">
+	<span *ngFor="let item of maleCoachList" class="member_box" (mouseenter)="displayLike('coach',item.id)" (mouseleave)="hiddenLike('coach',item.id)">
+		<a class="header_box" [routerLink]="['CoachDetail',{id:item.id}]">
+			<template [ngIf]="item.avatar">
+				<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+				</template>
+				<template [ngIf]="!item.avatar">
+				<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+			</template>
+		</a>
+		<a class="name_bg" [routerLink]="['CoachDetail',{id:item.id}]">
+			{{item.name}} ({{item.position}}) <br />
+			<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+			</template>
+			<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+			<template [ngIf]="item.birthplace">{{item.birthplace}}</template>
+		</a>
+		<div class="like_box" [hidden]="showLike('coach',item.id)">
+			<template [ngIf]="!nLikes['coach_'+item.id]||!nLikes['coach_'+item.id].like">
+			<span (click)="addLike($event,'coach',item.id)" class="span_like"></span>
+			</template>
+			<span *ngIf="nLikes['coach_'+item.id]" class="like_num">
+				{{nLikes['coach_'+item.id].likeNum}}
+			</span>
+		</div>
+	</span>
+	</template>
+</div>
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">中国女足教练</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<template [ngIf]="femaleCoachCats&&femaleCoachCats.length>0">
+				<template ngFor let-item [ngForOf]="femaleCoachCats" let-i="index">
+					<a *ngIf="item.coaches&&item.coaches.length>0" [class.text_here]="fCatName==item.categoryName" (click)="chagePlayer(item.categoryName,'f')" href="javascript:void(0);">{{item.categoryName}}</a>
+					<a *ngIf="!item.coaches||item.coaches.length<1" class="text_empty" href="javascript:void(0);">{{item.categoryName}}</a>
+				</template>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="part_box">
+	<template [ngIf]="femaleCoachList&&femaleCoachList.length>0">
+	<span *ngFor="let item of femaleCoachList" class="member_box" (mouseenter)="displayLike('coach',item.id)" (mouseleave)="hiddenLike('coach',item.id)">
+		<a class="header_box" [routerLink]="['CoachDetail',{id:item.id}]">
+			<template [ngIf]="item.avatar">
+				<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+				</template>
+				<template [ngIf]="!item.avatar">
+				<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+			</template>
+		</a>
+		<a class="name_bg" [routerLink]="['CoachDetail',{id:item.id}]">
+			{{item.name}} ({{item.position}})  <br />
+			<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+			</template>
+			<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+			<template [ngIf]="item.birthplace">{{item.birthplace}}</template>
+		</a>
+		<div class="like_box" [hidden]="showLike('coach',item.id)">
+			<template [ngIf]="!nLikes['coach_'+item.id]||!nLikes['coach_'+item.id].like">
+			<span (click)="addLike($event,'coach',item.id)" class="span_like"></span>
+			</template>
+			<span *ngIf="nLikes['coach_'+item.id]" class="like_num">
+				{{nLikes['coach_'+item.id].likeNum}}
+			</span>
+		</div>
+	</span>
+	</template>
+</div>

@@ -1,0 +1,60 @@
+<div class="per100_bg2">
+	<div class="con_width990">
+		<div class="part_title" style="border-bottom:none;height:20px;margin:0;">
+			<span class="spanleft">&nbsp;</span>
+		</div>
+		<div class="part_box2" style="min-height: 600px;">
+			<template [ngIf]="pages&&pages.length>0">
+			<div class="contentbox">
+				<template ngFor let-item [ngForOf]="pages">
+				<div>
+					<b>
+						{{item.title}}
+						<template [ngIf]="item.subTitle"> - {{item.subTitle}}</template>
+					</b>
+					<p *ngIf="item.text" [innerHTML]="item.text"></p>
+					<p *ngIf="item.images&&item.images.length>0" class="p_img"><img *ngFor="let img of item.images" src="{{imgPrefix}}{{img}}" /></p>
+					<p *ngIf="item.videos&&item.videos.length>0" class="p_video">
+						<a *ngFor="let video of item.videos" (click)="playVideo(video.id)" class="video_play">
+							<img src="{{imgPrefix}}{{video.imagePath}}" />
+							<span>&nbsp;</span>
+						</a>
+					</p>
+					<p *ngIf="item.animation" class="p_video">
+						<a (click)="playAnimation(item.animation)" class="video_play">
+							<img src="{{imgPrefix}}{{item.animation}}/HD?vframe/jpg/offset/1/w/200/h/112" />
+							<span>&nbsp;</span>
+						</a>
+					</p>
+				</div>
+				</template>
+			</div>
+			</template>
+			<div #loadMore *ngIf="pages.length<totalNum" (window:scroll)="onScroll($event)" style="display: none;">
+				<a (click)="moreText()" href="javascript:void(0);">加载更多</a>
+			</div>
+			<template [ngIf]="trainingCats&&trainingCats.length>0">
+			<div class="text-cats-placeholder" style="float:right"></div>
+			<ul #text_directory class="text-cats-list list_bg">
+				<li class="menu">教材目录</li>
+				<li *ngFor="let item of trainingCats">
+					<a [class.mark_here]="item.id==selectCatId" (click)="trainingPage(item.id)" href="javascript:void(0);">{{item.name}}</a>
+				</li>
+			</ul>
+			</template>
+		</div>
+	</div>
+</div>
+<!-- 在这里播放视频 -->
+<div class="black_bg" [hidden]="hideVideo">
+	<div class="video_show">
+		<template [ngIf]="currVideo">
+			<video width="100%" #videoplayer autoplay controls>
+				<!-- <source src="{{imgPrefix}}{{video.videoPath}}" type="video/mp4"> -->
+				<source src="{{imgPrefix}}{{currVideo.videoPath}}/HD" type="video/mp4">
+			</video>
+		</template>
+	</div>
+	<span class="bt_close" (click)="hiddenVideo()">&nbsp;</span>
+</div>
+

@@ -1,0 +1,152 @@
+<!-- 团队成员 -->
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">男足国家队阵容</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other" style="display:none;">&nbsp;</div>
+	</div>
+</div>
+<div class="part_box">
+	<span *ngIf="teamLeader" (mouseenter)="displayLike('leader',teamLeader.id)" (mouseleave)="hiddenLike('leader',teamLeader.id)" class="member_box">
+		<a class="header_box" [routerLink]="['LeaderDetail',{id:teamLeader.id}]">
+		<template [ngIf]="teamLeader.avatar">
+		<img alt="{{teamLeader.name}}" src="{{prefixImg}}{{teamLeader.avatar}}?imageView/1/w/190/h/253" />
+		</template>
+		<template [ngIf]="!teamLeader.avatar">
+		<img  alt="{{teamLeader.name}}" src="app/images/defaul_male.jpg" />
+		</template>	
+		</a>
+		<a class="name_bg" [routerLink]="['LeaderDetail',{id:teamLeader.id}]">
+			{{teamLeader.name}} ({{teamLeader.position}})<br />
+			<template [ngIf]="teamLeader.birthday">
+				{{teamLeader.birthday | df:'yyyy-MM-dd'}} <br />
+			</template>
+			<template [ngIf]="teamLeader.height&&teamLeader.weight">{{teamLeader.height}}cm/{{teamLeader.weight}}kg<br /></template>
+			<template [ngIf]="teamLeader.club">{{teamLeader.club}}</template>
+		</a>
+		<div [hidden]="showLike('leader',teamLeader.id)" class="like_box">
+			<template [ngIf]="!nLikes['leader_'+teamLeader.id]||!nLikes['leader_'+teamLeader.id].like">
+			<span (click)="addLike($event,'leader',teamLeader.id)" class="span_like"></span>
+			</template>
+			<span *ngIf="nLikes['leader_'+teamLeader.id]" class="like_num">
+				{{nLikes['leader_'+teamLeader.id].likeNum}}
+			</span>
+		</div>
+	</span>
+	<span *ngIf="chiefCoach" (mouseenter)="displayLike('coach',chiefCoach.id)" (mouseleave)="hiddenLike('coach',chiefCoach.id)" class="member_box">
+		<a class="header_box" [routerLink]="['CoachDetail',{id:chiefCoach.id}]">
+			<template [ngIf]="chiefCoach.avatar">
+			<img alt="{{chiefCoach.name}}" src="{{prefixImg}}{{chiefCoach.avatar}}?imageView/1/w/190/h/253" />
+			</template>
+			<template [ngIf]="!chiefCoach.avatar">
+			<img alt="{{chiefCoach.name}}" src="app/images/defaul_male.jpg" />
+			</template>	
+		</a>
+		<a class="name_bg" [routerLink]="['CoachDetail',{id:chiefCoach.id}]">
+			{{chiefCoach.name}} ({{chiefCoach.position}})<br />
+			<template [ngIf]="chiefCoach.birthday">
+				{{chiefCoach.birthday | df:'yyyy-MM-dd'}} <br />
+			</template>
+			<template [ngIf]="chiefCoach.height&&chiefCoach.weight">{{chiefCoach.height}}cm/{{chiefCoach.weight}}kg<br /></template>
+			<template [ngIf]="chiefCoach.club">{{chiefCoach.club}}</template>
+
+		</a>
+		<div [hidden]="showLike('coach',chiefCoach.id)" class="like_box">
+			<template [ngIf]="!nLikes['coach_'+chiefCoach.id]||!nLikes['coach_'+chiefCoach.id].like">
+			<span (click)="addLike($event,'coach',chiefCoach.id)" class="span_like"></span>
+			</template>
+			<span *ngIf="nLikes['coach_'+chiefCoach.id]" class="like_num">
+				{{nLikes['coach_'+chiefCoach.id].likeNum}}
+			</span>
+		</div>
+	</span>
+	<template [ngIf]="assistantCoach&&assistantCoach.length>0">
+		<span *ngFor="let item of assistantCoach" (mouseenter)="displayLike('coach',item.id)" (mouseleave)="hiddenLike('coach',item.id)" class="member_box">
+			<a class="header_box" [routerLink]="['CoachDetail',{id:item.id}]">
+				<template [ngIf]="item.avatar">
+				<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+				</template>
+				<template [ngIf]="!item.avatar">
+				<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+				</template>	
+			</a>
+			<a class="name_bg" [routerLink]="['CoachDetail',{id:item.id}]">
+				{{item.name}} ({{item.position}} )<br />
+				<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+				</template>
+				<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+				<template [ngIf]="item.club">{{item.club}}</template>
+			</a>
+			<div [hidden]="showLike('coach',item.id)" class="like_box">
+				<template [ngIf]="!nLikes['coach_'+item.id]||!nLikes['coach_'+item.id].like">
+				<span (click)="addLike($event,'coach',item.id)" class="span_like"></span>
+				</template>
+				<span *ngIf="nLikes['coach_'+item.id]" class="like_num">
+					{{nLikes['coach_'+item.id].likeNum}}
+				</span>
+			</div>
+		</span>
+	</template>
+	
+	<template [ngIf]="players&&players.length>0">
+		<span *ngFor="let item of players" (mouseenter)="displayLike('player',item.id)" (mouseleave)="hiddenLike('player',item.id)" class="member_box">
+			<a class="header_box" [routerLink]="['PlayDetail',{id:item.id,level:1}]">
+				<template [ngIf]="item.avatar">
+				<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+				</template>
+				<template [ngIf]="!item.avatar">
+				<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+				</template>	
+			</a>
+			<a class="name_bg" [routerLink]="['PlayDetail',{id:item.id,level:1}]">
+				{{item.name}} ({{item.position}} )<br />
+				<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+				</template>
+				<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+				<template [ngIf]="item.club">{{item.club}}<br /></template>
+			</a>
+			<div [hidden]="showLike('player',item.id)" class="like_box">
+				<template [ngIf]="!nLikes['player_'+item.id]||!nLikes['player_'+item.id].like">
+				<span (click)="addLike($event,'player',item.id)" class="span_like"></span>
+				</template>
+				<span *ngIf="nLikes['player_'+item.id]" class="like_num">
+					{{nLikes['player_'+item.id].likeNum}}
+				</span>
+			</div>
+		</span>
+	</template>
+
+		<template [ngIf]="staffs&&staffs.length>0">
+		<span *ngFor="let item of staffs" (mouseenter)="displayLike('staff',item.id)" (mouseleave)="hiddenLike('staff',item.id)" class="member_box">
+			<a class="header_box" [routerLink]="['LeaderDetail',{id:item.id}]">
+				<template [ngIf]="item.avatar">
+				<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+				</template>
+				<template [ngIf]="!item.avatar">
+				<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+				</template>
+			</a>
+			<a class="name_bg" [routerLink]="['LeaderDetail',{id:item.id}]">
+				{{item.name}} ({{item.position}})<br />
+				<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+				</template>
+				<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+				<template [ngIf]="item.club">{{item.club}}</template>
+			</a>
+			<div [hidden]="showLike('staff',item.id)" class="like_box">
+				<template [ngIf]="!nLikes['staff_'+item.id]||!nLikes['staff_'+item.id].like">
+				<span (click)="addLike($event,'staff',item.id)" class="span_like"></span>
+				</template>
+				<span *ngIf="nLikes['staff_'+item.id]" class="like_num">
+					{{nLikes['staff_'+item.id].likeNum}}
+				</span>
+			</div>
+		</span>
+	</template>
+	
+
+</div>
