@@ -48,6 +48,8 @@ const barrels: string[] = [
   'app/component/about',
   //'app/component/download',
   'app/component/user',
+  'app/component/coach',
+  'app/coach',
   /** @cli-barrel */
 ];
 
