@@ -45,11 +45,14 @@ const barrels: string[] = [
   //'app/component/elearing',
   //'app/component/etest',
   //'app/component/yong',
-  'app/component/about',
   //'app/component/download',
   'app/component/user',
   'app/component/coach',
-  'app/coach',
+  'app/component/wemedia',
+  'app/component/staff',
+  'app/component/player',
+  'app/component/competition',
+  'app/component/elearning',
   /** @cli-barrel */
 ];
 

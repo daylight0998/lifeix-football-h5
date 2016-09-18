@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AASA,SAAS;EACP,KAAK,EAAC,GAAG;EACT,MAAM,EAAC,eAAe;;AAExB,SAAS;EACP,KAAK,EAAC,IAAI;EACV,MAAM,EAAC,IAAI;EACX,KAAK,EAAC,OAAO;EACb,WAAC;IACC,SAAS,EAAC,UAAW;IACrB,WAAW,EAAC,IAAI;IAChB,QAAQ,EAAC,MAAM",
+"sources": ["competition.component.scss"],
+"names": [],
+"file": "competition.component.css"
+}

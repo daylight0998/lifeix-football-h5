@@ -41,13 +41,13 @@
   </div>
 </footer>
 <!-- APP下载提示 -->
-<div id="app_download" class="download_app" style="display: none;">
-  <div class="APP_logo"><img alt="APP_logo" src="http://s.files.c-f.com/APP_logo.png"/></div>
-  <div class="logo_name">
-    <b>中国足球网</b>
-  </div>
-  <a href="https://itunes.apple.com/us/app/id1112038310">立即下载</a>
-</div>
+<!--<div id="app_download" class="download_app" style="display: none;">-->
+  <!--<div class="APP_logo"><img alt="APP_logo" src="http://s.files.c-f.com/APP_logo.png"/></div>-->
+  <!--<div class="logo_name">-->
+    <!--<b>中国足球网</b>-->
+  <!--</div>-->
+  <!--<a href="https://itunes.apple.com/us/app/id1112038310">立即下载</a>-->
+<!--</div>-->
 
 {{#each scripts.polyfills}}
 <script src="{{.}}"></script>
@@ -69,10 +69,10 @@
 </script>
 
 <script>
-  var ua = window.navigator.userAgent;
-  if (ua.match('(Android|webOS|iPhone|iPod|iPad|BlackBerry|Mobile)')) {
-    $("#app_download").show();
-  }
+//  var ua = window.navigator.userAgent;
+//  if (ua.match('(Android|webOS|iPhone|iPod|iPad|BlackBerry|Mobile)')) {
+//    $("#app_download").show();
+//  }
 </script>
 </body>
 </html>
