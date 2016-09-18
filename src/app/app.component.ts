@@ -8,14 +8,14 @@ import {environment} from './environment';
 
 @Component({
   selector: 'cf-content',
-  templateUrl: 'app/template/cf-home.html'+environment.fileVersion,
-  providers:[ROUTER_PROVIDERS],
-  directives: [ROUTER_DIRECTIVES,FootballComponent],
+  templateUrl: 'app/template/cf-home.html' + environment.fileVersion,
+  providers: [ROUTER_PROVIDERS],
+  directives: [ROUTER_DIRECTIVES, FootballComponent],
 })
 @RouteConfig([
-	{ path: "/", name: "Home", component: HomeComponent },
-	{ path: "/user", name: "User", component: UserComponent },
-	{ path: "/about", name: "About", component: AboutComponent }
+  {path: "/", name: "Home", component: HomeComponent},
+  {path: "/user", name: "User", component: UserComponent},
+  {path: "/about", name: "About", component: AboutComponent}
 ])
 export class AppComponent {
 
