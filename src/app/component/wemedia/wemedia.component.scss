@@ -1,0 +1,56 @@
+@function pxTorem($px, $base-font-size: 37.5px) {
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return pxTorem($px + 0px); // That may fail.
+  } @else if (unit($px) == rem) {
+    @return $px;
+  }
+  @return (($px / $base-font-size) * 1)+rem;
+}
+.text_box{
+  width:94%;
+  margin:0 auto pxTorem(100);
+}
+.text_title{
+  width:100%;
+  height:auto;
+  margin:0 auto;
+  font-size:pxTorem(20);
+  color:#333333;
+  line-height:150%;
+  span{
+    display:inline-block;
+    margin-right:pxTorem(10);
+    font-size:pxTorem(14);
+    color:#999999;
+  }
+  p{
+    margin:pxTorem(15) 0 pxTorem(10);
+  }
+}
+.text_con{
+  width:100%;
+  height:auto;
+  padding:pxTorem(5) 0;margin:pxTorem(5) auto;
+  color:#333333;
+  border-top:pxTorem(1) #d9d9d9 solid;
+  p{
+    font-size:pxTorem(18);
+    line-height:160%;
+    text-indent:pxTorem(35);
+    overflow:hidden;
+    margin: 0.5rem 0;
+  }
+  .p_img,.p_video{
+    text-indent:0;
+    text-align:center;
+  }
+  .p_img img{
+    width:100%;
+  }
+  a{
+    font-size:pxTorem(18);
+    color:#db3632;
+    text-decoration:underline;
+  }
+}

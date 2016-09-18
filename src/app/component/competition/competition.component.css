@@ -1,0 +1,14 @@
+.text_box {
+  width: 85%;
+  margin: 0.13333rem auto; }
+
+.text_con {
+  width: 100%;
+  height: auto;
+  color: #666666; }
+  .text_con p {
+    font-size: 0.34667rem;
+    line-height: 160%;
+    overflow: hidden; }
+
+/*# sourceMappingURL=competition.component.css.map */
