@@ -27,22 +27,22 @@ export class HomeComponent implements OnInit {
   constructor(public global: Global,private categoryApi:CategoryApi,private titleService: Title) {
     this.categories = global.categories;
 	if(!this.category) {
-		this.getCategories();
+		//this.getCategories();
 	}
 	// else{
 	// 	this.currCategory();
 	// }
   }
 
-  	getCategories() {
-		this.categoryApi.getCategoryList().toPromise().then(
-			(cats) => {
-				this.categories = cats;
-				this.global.categories = cats;
-				this.currCategory();
-			}
-		);
-	}
+  	//getCategories() {
+	//	this.categoryApi.getCategoryList().toPromise().then(
+	//		(cats) => {
+	//			this.categories = cats;
+	//			this.global.categories = cats;
+	//			this.currCategory();
+	//		}
+	//	);
+	//}
 
 	currCategory() {
 		for (var cat of this.categories) {

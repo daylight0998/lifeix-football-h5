@@ -1,12 +1,12 @@
-<!--<template [ngIf]="category">-->
-	<!--<cf-top-news [(category)]="category"></cf-top-news>-->
-<!--</template>-->
+<template [ngIf]="category">
+	<cf-top-news [(category)]="category"></cf-top-news>
+</template>
 <div class="per100_bg">
 	<div *ngIf="category" class="con_width990">
-		<!--<cf-china-timeline></cf-china-timeline>-->
-		<!--<cf-china-team-player></cf-china-team-player>-->
-		<!--<template [ngIf]="category">-->
-			<!--<cf-news-list [category]="category"></cf-news-list>	-->
-		<!--</template>-->
+		<cf-china-timeline></cf-china-timeline>
+		<cf-china-team-player></cf-china-team-player>
+		<template [ngIf]="category">
+			<cf-news-list [category]="category"></cf-news-list>
+		</template>
 	</div>
 </div>

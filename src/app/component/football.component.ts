@@ -5,7 +5,7 @@ import {CategoryApi} from '../api/CategoryApi';
 import {Global}from '../shared/global';
 import {ElearningApi} from '../api/ElearningApi';
 import {Category,ElearningTrainingCategory,ElearningQuizCategory} from '../api/model/models';
-import {HomeComponent} from './home';
+import {HomeComponent} from './home/home.component';
 import {environment} from '../environment';
 import {Title} from '@angular/platform-browser';
 
@@ -88,7 +88,7 @@ export class FootballComponent implements OnInit,AfterContentInit {
 	}
 
 	selectStyle(item){
-		
+
 		if(item==this.selectPage||item==this.hoverPage) {
 
 			return "#db3632"
@@ -96,7 +96,7 @@ export class FootballComponent implements OnInit,AfterContentInit {
 	}
 
 	ngOnInit() {
-		this.getCategories();
+		//this.getCategories();
 		this.getTrainingCats();
 		this.getTestCats();
 		// this.categories = [
