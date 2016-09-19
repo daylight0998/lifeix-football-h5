@@ -1,0 +1,48 @@
+<div class="part_title">
+	<div class="bar_left">&nbsp;</div>
+	<div class="bar_border">
+		<div class="bar_middle">{{playerTitle}}球员</div>
+		<div class="bar_right">&nbsp;</div>
+		<div class="bar_other">
+			<template [ngIf]="playerCats&&playerCats.length>0">
+				<template ngFor let-item [ngForOf]="playerCats" let-i="index">
+					<a *ngIf="item.players&&item.players.length>0" [class.text_here]="item.categoryName==selectCatName"  (click)="chagePlayer(item.categoryName)">{{item.categoryName}}</a>
+					<a *ngIf="!item.players||item.players.length<1" class="text_empty">{{item.categoryName}}</a>
+				</template>
+			</template>
+		</div>
+	</div>
+</div>
+<div class="part_box">
+	<template [ngIf]="playerList&&playerList.length>0" >
+	<span *ngFor="let item of playerList" class="member_box" (mouseenter)="displayLike('player',item.id)" (mouseleave)="hiddenLike('player',item.id)">
+		<a class="header_box" [routerLink]="['PlayDetail',{id:item.id,level:nationalLevel}]">
+		<template [ngIf]="item.avatar">
+		<img alt="{{item.name}}" src="{{prefixImg}}{{item.avatar}}?imageView/1/w/190/h/253" />
+		</template>
+		<template [ngIf]="!item.avatar&&item.sex=='男'">
+			<img alt="{{item.name}}" src="app/images/defaul_male.jpg" />
+		</template>
+		<template [ngIf]="!item.avatar&&item.sex=='女'">
+			<img alt="{{item.name}}" src="app/images/defaul_female.jpg" />
+		</template>
+		</a>
+		<a class="name_bg" [routerLink]="['PlayDetail',{id:item.id,level:nationalLevel}]">
+			{{item.name}} ({{item.position}} )<br />
+			<template [ngIf]="item.birthday">
+					{{item.birthday | df:'yyyy-MM-dd'}} <br />
+			</template>
+			<template [ngIf]="item.height&&item.weight">{{item.height}}cm/{{item.weight}}kg<br /></template>
+			<template [ngIf]="item.club">{{item.club}}</template>
+		</a>
+		<div class="like_box" [hidden]="showLike('player',item.id)">
+			<template [ngIf]="!nLikes['player_'+item.id]||!nLikes['player_'+item.id].like">
+			<span (click)="addLike($event,'player',item.id)" class="span_like"></span>
+			</template>
+			<span *ngIf="nLikes['player_'+item.id]" class="like_num">
+				{{nLikes['player_'+item.id].likeNum}}
+			</span>
+		</div>
+	</span>
+	</template>
+</div>

@@ -1,0 +1,25 @@
+<div class="per100_bg2">
+	<div class="con_width990">
+		<div class="part_title">
+			<template [ngIf]="trainingCats&&trainingCats.length>0">
+				<template ngFor let-item [ngForOf]="trainingCats" let-i="index">
+					<a [class.text_here]="selectCatId==item.id" (click)="getVideoPage(item.id)" href="javascript:void(0);">{{item.name}}</a>
+				</template>
+			</template>
+		</div>
+		<div class="part_box">
+			<template [ngIf]="pages&&pages.length>0">
+				<a template="ngFor: let item of pages; let i=index" class="videobox" [routerLink]="['AnimateDetail',{subjectId:categoryId,categoryId:selectCatId,index:i+1,id:item.exercise.id}]">
+					<span class="video_img">
+						<img src="{{imgPrefix}}{{item.image}}" />
+						<span class="bt_play"> </span>
+					</span>
+					<span class="video_num">{{item.title}}</span>
+				</a>
+			</template>
+		</div>
+		<div #videoMore *ngIf="pages.length<totalNum" (window:scroll)="onScroll($event)" class="video_more">
+			<a (click)="moreVideo()" href="javascript:void(0);">加载更多</a>
+		</div>
+	</div>
+</div>

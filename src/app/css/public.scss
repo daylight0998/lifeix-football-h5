@@ -1,3 +1,13 @@
+@function pxTorem($px, $base-font-size: 37.5px) {
+  @if (unitless($px)) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return pxTorem($px + 0px); // That may fail.
+  } @else if (unit($px) == rem) {
+    @return $px;
+  }
+  @return (($px / $base-font-size) * 1)+rem;
+}
+
 body{
   padding:0;
   margin:0;
@@ -108,3 +118,16 @@ a,button,input,li{
   @return $px*750/$designWidth/75 + rem; //这句是不是感觉很熟悉 这句其实跟上面的那段js是对应的
 }
 $designWidth : 750; //750设计图*/
+
+.part_box{
+  width:100%;
+  overflow:hidden;
+  margin-bottom:pxTorem(30);
+  p {
+    font-size: 16px;
+    line-height:160%;
+    text-indent:pxTorem(32);
+    margin: 0.5rem 0;
+  }
+}
+

@@ -1,0 +1,106 @@
+<div class="per100_bg2">
+	<div class="video_width">
+		<div class="video_show">
+			<!-- 这里是视频播放窗口 -->
+			<div class="box_1">
+				<template [ngIf]="video">
+					<video [hidden]="focusType!=0" width="100%" #videoplayer autoplay controls>
+						<source src="{{imgPrefix}}{{video.animation}}/HD" type="video/mp4">
+					</video>	
+					<video [hidden]="focusType!=1" width="100%" #videoplayer1 autoplay controls>
+						<source src="{{imgPrefix}}{{video.video1}}/HD" type="video/mp4">
+					</video>
+					<video [hidden]="focusType!=2" width="100%" #videoplayer2 autoplay controls>
+						<source src="{{imgPrefix}}{{video.video2}}/HD" type="video/mp4">
+					</video>
+				</template>
+				<template [ngIf]="!video">
+					视频正飞奔在网络中...
+				</template>
+			</div>
+			<!-- 弹出层 文本类型 -->
+			<div class="box_2" [hidden]="isVideoShow">
+				<a class="bt_close" (click)="hidePop()" href="javascript:void(0);">&nbsp;</a>
+				<template [ngIf]="detailShow">
+				<div class="con_text" [innerHTML]="detailShow">&nbsp;</div>
+				</template>
+				<template [ngIf]="!detailShow">
+					
+				<div class="box_answertitle">
+				<template [ngIf]="traniningCat">{{traniningCat.name}} - </template>
+				<template [ngIf]="video">{{video.title}}</template>
+				</div>
+					
+				
+				<div class="box_answerview">
+					<template [ngIf]="video&&video.r1&&video.r1.length>0">
+						<template [ngIf]="video.r1[0].image">
+							<ul class="img_list">
+								<li *ngFor="let item of video.r1">
+									<span><img src="{{imgPrefix}}{{item.image}}" /></span>
+									<a [class.mark_yes]="item.right" [class.mark_no]="!item.right">&nbsp;</a>
+								</li>	
+							</ul>
+						</template>
+						<template [ngIf]="!video.r1[0].image">
+							<template [ngIf]="!video.r1[0].image&&!video.r2">
+							<ul class="one_list">
+								<li *ngFor="let item of video.r1">
+									<span *ngIf="!item.right" class="mark_no">&nbsp;</span>
+									<span *ngIf="item.right" class="mark_yes">&nbsp;</span>
+									<span>{{item.text}}</span>
+								</li>
+							</ul>
+							</template>
+							<template [ngIf]="!video.r1[0].image&&video.r2&&video.r2.length>0">
+							<ul class="left_list">
+								<li *ngFor="let item of video.r1">
+									<span>{{item.text}}</span>
+									<span *ngIf="!item.right" class="mark_no">&nbsp;</span>
+									<span *ngIf="item.right" class="mark_yes">&nbsp;</span>
+								</li>
+							</ul>
+							</template>
+						</template>
+					</template>
+					<template [ngIf]="video&&video.r2&&video.r2.length>0">
+					<ul class="right_list">
+						<li *ngFor="let item of video.r2">
+							<span *ngIf="!item.right" class="mark_no">&nbsp;</span>
+							<span *ngIf="item.right" class="mark_yes">&nbsp;</span>
+							<span>{{item.text}}</span>
+						</li>
+					</ul>
+					</template>
+				</div>
+				</template>
+			</div>
+			<!-- 弹出层 决定 -->
+		</div>
+		<div class="bt_list">
+			<div class="bt_control">
+				<a [class.c_here]="0==focusType"  (click)="focusImportant(0)">模拟演示</a>
+				<span>|</span>
+				<a [class.c_here]="1==focusType"  (click)="focusImportant(1)">视频演示1</a>
+				<span>|</span>
+				<a [class.c_here]="2==focusType"  (click)="focusImportant(2)">视频演示2</a>
+				<span>|</span>
+				<a [class.c_here]="3==focusType"  (click)="focusImportant(3)">训练描述</a>
+				<span>|</span>
+				<a [class.c_here]="4==focusType"  (click)="focusImportant(4)">相关资源</a>
+				<span>|</span>
+				<a [class.c_here]="5==focusType"  (click)="focusImportant(5)">训练目标</a>
+				<span *ngIf="nextPage||prePage">|</span>
+				<a class="prev" *ngIf="prePage" [routerLink]="['AnimateDetail',{subjectId:subjectId,categoryId:categoryId,index:videoIndex-1,id:prePage.exercise.id}]">&nbsp;<span>&nbsp;</span></a>
+				<span *ngIf="nextPage">&nbsp;</span>
+				<span *ngIf="!nextPage">&nbsp;</span>
+				<a class="next" *ngIf="nextPage" [routerLink]="['AnimateDetail',{subjectId:subjectId,categoryId:categoryId,index:videoIndex+1,id:nextPage.exercise.id}]">&nbsp;<span>&nbsp;</span></a>
+				<span *ngIf="nextPage">&nbsp;</span>
+				<a class="next last" *ngIf="!nextPage" >&nbsp;<span id="last_span">&nbsp;</span></a>
+				<span *ngIf="!nextPage">&nbsp;</span>
+				<a *ngIf="subjectId&&categoryId" class="back_menu" [routerLink]="['TrainingAnimate',{id:subjectId,category:categoryId}]">&nbsp;<span>&nbsp;</span></a>
+			</div>
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div *ngIf="post" class="per100_bg">
+	<div class="con_width990">
+		<div class="text_box">
+			<div class="text_title">
+				{{post.title}}
+				<span>{{post.createTime|df:'yyyy-MM-dd HH:mm'}}</span>
+			</div>
+			<div [innerHTML]="postContent" class="text_con">&nbsp;</div>
+			<div class="text_control">
+				<template [ngIf]="like">
+				<span>
+					<a [class]="(like.like)?'text_unlike':'text_like'" (click)="addLike($event,true)"><b>&nbsp;</b><span [innerHTML]="like.likeNum">&nbsp;</span></a>
+					<a style="display:none;" class="text_unlike" (click)="addLike($event,false)"><b>&nbsp;</b><span [innerHTML]="like.unlikeNum">&nbsp;</span></a>
+				</span>
+				</template>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="post" class="third_share">
+	<a class="share_sina" [href]="share('sina',post)" target="_blank" title="分享到新浪微博">&nbsp;</a>
+	<a class="share_qzone" [href]="share('qzone',post)" target="_blank" title="分享到QQ空间">&nbsp;</a>
+	<a class="share_weixin" (click)="share('weixin',post)" target="_blank" title="分享到微信">&nbsp;</a>
+	<a class="share_f" [href]="share('fbook',post)" target="_blank" title="分享到Facebook">&nbsp;</a>
+	<a class="share_t" [href]="share('twi',post)" target="_blank" title="分享到Twitter">&nbsp;</a>
+	<div class="lable_weixin" [hidden]="weixinHiddenFlag">
+		打开微信 使用扫一扫将网页分享至朋友圈
+		
+		<span class="bt_close" (click)="hiddenPop()">&nbsp;</span>
+		<div id="detail_qrcode" align="center">
+			<img alt="微信二维码" src="{{weixinQRurl}}" />
+		</div>
+	</div>
+</div>

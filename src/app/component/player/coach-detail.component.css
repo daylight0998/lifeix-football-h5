@@ -49,16 +49,6 @@
     height: 1.06667rem;
     background: url("http://s.files.c-f.com/title_end.jpg") 0 0 no-repeat; }
 
-.part_box {
-  width: 100%;
-  overflow: hidden;
-  margin-bottom: 0.8rem; }
-  .part_box p {
-    font-size: 0.42667rem;
-    line-height: 160%;
-    text-indent: 0.85333rem;
-    margin: 0.5rem 0; }
-
 .member_header {
   width: 3.2rem;
   height: 4.26667rem;
@@ -77,41 +67,12 @@
     border-bottom: 0.02667rem #d9d9d9 solid;
     overflow: hidden;
     background-color: #f2f2f2;
-    height: 1.38667rem;
-    line-height: 1.38667rem;
+    height: 1.04rem;
+    line-height: 1.04rem;
     padding: 0 0.26667rem;
     font-size: 0.42667rem; }
     .info_list li b {
-      font-size: 0.48rem; }
-
-.info_other {
-  width: 100%;
-  height: auto;
-  border: 0.02667rem #d9d9d9 solid;
-  margin-top: 0.53333rem; }
-  .info_other li {
-    border-bottom: 0.02667rem #d9d9d9 solid;
-    overflow: hidden;
-    background-color: #f2f2f2; }
-    .info_other li span {
-      display: block;
-      float: left;
-      height: 1.6rem;
-      line-height: 1.6rem; }
-    .info_other li .list1 {
-      font-size: 0.42667rem;
-      background-color: #bababa;
-      width: 30%;
-      padding-right: 0.4rem;
-      text-align: right;
-      color: #ffffff; }
-    .info_other li .list2 {
-      font-size: 0.42667rem;
-      background-color: #f2f2f2;
-      width: 60%;
-      padding-left: 0.4rem;
-      text-align: left;
-      color: #000000; }
+      font-size: 0.42667rem; }
 
 .news_box {
   display: block;
@@ -162,22 +123,4 @@
   .bt_close:hover {
     background-position: -1.06667rem 0; }
 
-.black_bg {
-  width: 100%;
-  height: 17.06667rem;
-  background-color: #000000;
-  position: fixed;
-  _position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -8.53333rem;
-  z-index: 999; }
-  .black_bg .video_show {
-    width: 28.45333rem;
-    height: 16rem;
-    color: #ffffff;
-    text-align: center;
-    overflow: hidden;
-    margin: 0.53333rem auto; }
-
-/*# sourceMappingURL=player.component.css.map */
+/*# sourceMappingURL=coach-detail.component.css.map */

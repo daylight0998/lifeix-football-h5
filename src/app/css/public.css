@@ -105,5 +105,14 @@ a, button, input, li {
   @return $px*750/$designWidth/75 + rem; //这句是不是感觉很熟悉 这句其实跟上面的那段js是对应的
 }
 $designWidth : 750; //750设计图*/
+.part_box {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 0.8rem; }
+  .part_box p {
+    font-size: 16px;
+    line-height: 160%;
+    text-indent: 0.85333rem;
+    margin: 0.5rem 0; }
 
 /*# sourceMappingURL=public.css.map */
