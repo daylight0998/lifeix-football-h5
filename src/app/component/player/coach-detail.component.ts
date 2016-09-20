@@ -12,7 +12,7 @@ import {environment} from '../../environment';
   templateUrl: 'app/component/player/coach-detail.component.html'+environment.fileVersion,
   providers: [PlayerApi,LikesApi],
   pipes:[DateFormatPipe],
-  styleUrls: ['app/component/player/coach-detail.component.css']
+  /*styleUrls: ['app/component/player/coach-detail.component.css']*/
 })
 @Pipe({name:"date",pure:true})
 export class CoachDetailComponent implements OnInit {

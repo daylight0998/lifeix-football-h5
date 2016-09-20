@@ -8,8 +8,8 @@
   @return (($px / $base-font-size) * 1)+rem;
 }
 .text_box{
-  width:94%;
-  margin:0 auto pxTorem(100);
+  width:pxTorem(335);
+  margin:0 auto pxTorem(95);
 }
 .text_title{
   width:100%;

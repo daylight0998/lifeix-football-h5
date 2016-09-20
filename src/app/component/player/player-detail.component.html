@@ -1,9 +1,49 @@
 <template [ngIf]="player">
-<div class="per100_bg">
-	<div class="con_width990">
+  <div class="header_con">
+    <a class="CF_logo" href="" title="中国足球网">
+      <img class="CF_logo_pic" src="http://s.files.c-f.com/CF_logo.png" />
+    </a>
+    <span>中国足球网</span>
+  </div>
+  <div class="con_width">
 		<!-- 球员简历 -->
-		<div class="page_title"><span>球员介绍</span></div>
-		<div class="part_box">
+		<div class="page_title"></div>
+    <div class="part_box">
+      <div class="user_box">
+        <div class="member_header">
+          <template [ngIf]="player.avatar">
+            <img alt="{{player.name}}" src="{{prefixImg}}{{player.avatar}}?imageView/1/w/300/h/400" />
+          </template>
+          <template [ngIf]="!player.avatar">
+            <img alt="{{player.name}}" src="app/images/defaul_male.jpg" />
+          </template>
+        </div>
+        <ul class="info_list">
+          <li><b>{{player.name}}</b></li>
+          <li>生日:{{player.birthday | df:'yyyy-MM-dd'}}</li>
+          <li>出生地:{{player.birthplace}}</li>
+        </ul>
+      </div>
+      <ul class="info_other">
+        <li>
+          <span class="list1">身高/体重</span>
+          <span class="list2">{{player.height}}cm/{{player.weight}}kg</span>
+        </li>
+        <li>
+          <span class="list1">场上位置</span>
+          <span class="list2">
+            <template [ngIf]="player.nationTeam">
+						{{player.nationTeam.position}}
+						</template>
+          </span>
+        </li>
+        <li>
+          <span class="list1">俱乐部</span>
+          <span class="list2">{{player.club.name}}</span>
+        </li>
+      </ul>
+    </div>
+		<!--<div class="part_box">
 			<div class="member_header">
 				<template [ngIf]="player.avatar">
 				<img alt="{{player.name}}" src="{{prefixImg}}{{player.avatar}}?imageView/1/w/300/h/400" />
@@ -41,7 +81,7 @@
 					<span class="list2">
 						{{player.birthplace}}
 					<template [ngIf]="player.club">/{{player.club.name}}</template>
-					<template [ngIf]="!player.club">/--</template>
+					<template [ngIf]="!player.club">/&#45;&#45;</template>
 					</span>
 				</li>
 				<li style="border-bottom:none;">
@@ -53,104 +93,104 @@
 					</span>
 				</li>
 			</ul>
-		</div>
-		<!-- 国家队比赛 -->
-		<template [ngIf]="player.matches&&player.matches.length>0">
-		<div class="part_title">
-			<div class="bar_left">&nbsp;</div>
-			<div class="bar_border">
-				<div class="bar_middle">国家队比赛</div>
-				<div class="bar_right">&nbsp;</div>
-				<div class="bar_other" style="display:none;">&nbsp;</div>
-			</div>
-		</div>
-		
-		<div class="part_box">
-			<ul class="form_list">
-				<li class="form_header">
-					<span class="w1">比赛日期</span>
-					<span class="w2">赛事  </span>
-					<span class="w3">主队</span>
-					<span class="w4">客队</span>
-					<span class="w5">主客场</span>
-					<span class="w6">比分</span>
-					<span class="w7">胜负</span>
-					<span class="w8">状态</span>
-					<span class="w9">出场时间</span>
-					<span class="w10">进球</span>
-					<span class="w11">助攻</span>
-					<span class="w12">红黄牌</span>
-				</li>
-				<li *ngFor="let item of player.matches" class="form_boby">
-					<span class="w1">{{item.matchDate| df:'yyyy-MM-dd'}}&nbsp;</span>
-					<span class="w2">{{item.competition.name}}</span>
-					<span class="w3">{{item.hostTeam}}</span>
-					<span class="w4">
-						{{item.awayTeam}}
-					</span>
-					<span class="w5">
-						<template [ngIf]="item.hostTeam.indexOf('中国')>-1">主</template>
-						<template [ngIf]="item.hostTeam.indexOf('中国')==-1">客</template>
-					</span>
-					<span class="w6">{{item.hostScore}}:{{item.awayScore}}</span>
-					<span class="w7">
-						<template [ngIf]="item.hostTeam.indexOf('中国')>-1&&item.hostScore>item.awayScore">胜</template>
-						<template [ngIf]="item.hostTeam.indexOf('中国')>-1&&item.hostScore<item.awayScore">负</template>
-						<template [ngIf]="item.awayTeam.indexOf('中国')>-1&&item.hostScore<item.awayScore">胜</template>
-						<template [ngIf]="item.awayTeam.indexOf('中国')>-1&&item.hostScore>item.awayScore">负</template>
-						<template [ngIf]="item.hostScore==item.awayScore">平</template>
-					</span>
-					<span class="w8">
-						<template [ngIf]="item.first==1">首发</template>
-						<template [ngIf]="item.first!=1">替补</template>
-					</span>
-					<span class="w9">{{item.showTime}}</span>
-					<span class="w10">{{item.goal}}</span>
-					<span class="w11">{{item.assists}}</span>
-					<span class="w12">
-						<template [ngIf]="item.booking">
-							<div class="card_yellow">&nbsp;</div>
-						</template>
-						<template [ngIf]="item.dismissal">
-							<div class="card_red">&nbsp;</div>
-						</template>
-					</span>
-				</li>
-			</ul>
-		</div>
-		</template>
-		<!-- 运动生涯 -->
-		<template [ngIf]="player.introduce">
-			<div class="part_title">
-				<div class="bar_left">&nbsp;</div>
-				<div class="bar_border">
-					<div class="bar_middle">运动生涯</div>
-					<div class="bar_right">&nbsp;</div>
-					<div class="bar_other" style="display:none;">&nbsp;</div>
-				</div>
-			</div>
-			<div [innerHTML]="player.introduce" class="part_box">&nbsp;</div>
-		</template>
-		<!-- 高光时刻 -->
-		<template [ngIf]="player.playerVideos&&player.playerVideos.length>0">
-			<div class="part_title">
-				<div class="bar_left">&nbsp;</div>
-				<div class="bar_border">
-					<div class="bar_middle">高光时刻</div>
-					<div class="bar_right">&nbsp;</div>
-					<div class="bar_other" style="display:none;">&nbsp;</div>
-				</div>
-			</div>
-			<div class="part_box">
-				<a *ngFor="let item of player.playerVideos" class="news_box" (click)="playVideo(item)">
-					<img alt="{{item.title}}" src="{{prefixImg}}{{item.url}}?vframe/jpg/offset/1/w/200/h/112" />
-					<span class="text_bg">{{item.title}}</span>
-					<span class="bt_play"> </span>
-				</a>
-			</div>
-		</template>
-	</div>
-</div>
+		</div>-->
+    <!-- 国家队比赛 -->
+    <!--<template [ngIf]="player.matches&&player.matches.length>0">
+        <div class="part_title">
+            <div class="bar_left">&nbsp;</div>
+            <div class="bar_border">
+                <div class="bar_middle">国家队比赛</div>
+                <div class="bar_right">&nbsp;</div>
+                <div class="bar_other" style="display:none;">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="part_box">
+            <ul class="form_list">
+                <li class="form_header">
+                    <span class="w1">比赛日期</span>
+                    <span class="w2">赛事  </span>
+                    <span class="w3">主队</span>
+                    <span class="w4">客队</span>
+                    <span class="w5">主客场</span>
+                    <span class="w6">比分</span>
+                    <span class="w7">胜负</span>
+                    <span class="w8">状态</span>
+                    <span class="w9">出场时间</span>
+                    <span class="w10">进球</span>
+                    <span class="w11">助攻</span>
+                    <span class="w12">红黄牌</span>
+                </li>
+                <li *ngFor="let item of player.matches" class="form_boby">
+                    <span class="w1">{{item.matchDate| df:'yyyy-MM-dd'}}&nbsp;</span>
+                    <span class="w2">{{item.competition.name}}</span>
+                    <span class="w3">{{item.hostTeam}}</span>
+                    <span class="w4">
+                        {{item.awayTeam}}
+                    </span>
+                    <span class="w5">
+                        <template [ngIf]="item.hostTeam.indexOf('中国')>-1">主</template>
+                        <template [ngIf]="item.hostTeam.indexOf('中国')==-1">客</template>
+                    </span>
+                    <span class="w6">{{item.hostScore}}:{{item.awayScore}}</span>
+                    <span class="w7">
+                        <template [ngIf]="item.hostTeam.indexOf('中国')>-1&&item.hostScore>item.awayScore">胜</template>
+                        <template [ngIf]="item.hostTeam.indexOf('中国')>-1&&item.hostScore<item.awayScore">负</template>
+                        <template [ngIf]="item.awayTeam.indexOf('中国')>-1&&item.hostScore<item.awayScore">胜</template>
+                        <template [ngIf]="item.awayTeam.indexOf('中国')>-1&&item.hostScore>item.awayScore">负</template>
+                        <template [ngIf]="item.hostScore==item.awayScore">平</template>
+                    </span>
+                    <span class="w8">
+                        <template [ngIf]="item.first==1">首发</template>
+                        <template [ngIf]="item.first!=1">替补</template>
+                    </span>
+                    <span class="w9">{{item.showTime}}</span>
+                    <span class="w10">{{item.goal}}</span>
+                    <span class="w11">{{item.assists}}</span>
+                    <span class="w12">
+                        <template [ngIf]="item.booking">
+                            <div class="card_yellow">&nbsp;</div>
+                        </template>
+                        <template [ngIf]="item.dismissal">
+                            <div class="card_red">&nbsp;</div>
+                        </template>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        </template>-->
+    <!-- 运动生涯 -->
+    <template [ngIf]="player.introduce">
+      <div class="part_title">
+        <div class="bar_left">&nbsp;</div>
+        <div class="bar_border">
+          <div class="bar_middle">运动生涯</div>
+          <div class="bar_right">&nbsp;</div>
+          <!--<div class="bar_other" style="display:none;">&nbsp;</div>-->
+        </div>
+      </div>
+      <div [innerHTML]="player.introduce" class="part_box">&nbsp;</div>
+    </template>
+    <!-- 高光时刻 -->
+    <template [ngIf]="player.playerVideos&&player.playerVideos.length>0">
+      <div class="part_title">
+        <div class="bar_left">&nbsp;</div>
+        <div class="bar_border">
+          <div class="bar_middle">高光时刻</div>
+          <div class="bar_right">&nbsp;</div>
+          <!--<div class="bar_other" style="display:none;">&nbsp;</div>-->
+        </div>
+      </div>
+      <div class="part_box">
+        <video id="video" width="100%" controls="controls" *ngFor="let item of player.playerVideos" (click)="playVideo(item)" poster="{{prefixImg}}{{item.url}}?vframe/jpg/offset/1/w/200/h/112">
+          <!--<img alt="{{item.title}}" src="{{prefixImg}}{{item.url}}?vframe/jpg/offset/1/w/200/h/112" />
+                    <span class="text_bg">{{item.title}}</span>
+                    <span class="bt_play"> </span>-->
+        </video>
+      </div>
+    </template>
+  </div>
+
 <!-- 在这里播放视频 -->
 <div class="black_bg" [hidden]="hideVideo">
 	<div class="video_show">
@@ -162,4 +202,14 @@
 	</div>
 	<span class="bt_close" (click)="hiddenVideo()">&nbsp;</span>
 </div>
+  <!-- APP下载提示 -->
+  <div class="download_app">
+    <div class="APP_logo"><img src="http://s.files.c-f.com/APP_logo.png"/></div>
+    <div class="logo_name">
+      <b>中国足球网</b>
+    </div>
+    <img class="bg_yellow" src="http://s.files.c-f.com/share_btn.png" />
+    <a href="http://www.c-f.com/download">立即下载</a>
+    <span>&nbsp;</span>
+  </div>
 </template>

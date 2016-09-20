@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 公共 */
 body {
   padding: 0;
   margin: 0; }
@@ -32,87 +33,603 @@ p {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0; }
 
-/*分享header、footer*/
+a, button, input, li {
+  -webkit-tap-highlight-color: transparent; }
+
+/* 公共 end */
+/* 分享header、footer */
 .header_con {
   width: 100%;
-  height: 50px;
+  height: 1.33333rem;
   background-color: #dd0000; }
   .header_con span {
     color: #ffffff;
-    padding-top: 21px;
-    font-size: 20px;
-    display: block;
-    float: left; }
+    font-size: 0.53333rem;
+    position: absolute;
+    top: 0.48rem; }
 
 .download_app {
   width: 100%;
   height: auto;
   background-color: #05234d;
   overflow: hidden;
-  padding: 15px 10px;
+  padding: 0.4rem 0.26667rem;
   position: fixed;
   bottom: 0;
   opacity: 0.9;
   filter: Alpha(opacity=90);
   color: #ffffff; }
-  .download_app a {
-    display: block;
-    float: right;
-    color: white;
-    background: url("http://s.files.c-f.com/share_btn.png") 0 0 no-repeat;
+  .download_app .bg_yellow {
+    position: fixed;
+    right: 0;
     border: 0;
-    width: 120px;
-    height: 50px;
-    margin: 7px 25px 0 0;
-    line-height: 45px;
+    width: 3.2rem;
+    height: 1.33333rem;
+    margin: 0.18667rem 0.66667rem 0 0; }
+  .download_app a {
+    position: fixed;
+    display: block;
+    right: 0;
+    color: white;
+    border: 0;
+    width: 3.2rem;
+    height: 1.33333rem;
+    margin: 0.18667rem 0.66667rem 0 0;
+    line-height: 1.33333rem;
     text-align: center;
-    font-size: 18px; }
+    font-size: 0.48rem; }
 
 .APP_logo {
-  width: 65px;
-  height: 65px;
-  float: left;
-  background: url("http://s.files.c-f.com/APP_logo.png") 0 0 no-repeat; }
+  width: 1.73333rem;
+  height: 1.73333rem;
+  float: left; }
+  .APP_logo img {
+    width: 100%;
+    height: 100%; }
 
 .CF_logo {
-  width: 160px;
-  height: 50px;
+  width: auto;
+  height: 1.33333rem;
   float: left;
-  margin-left: 10px;
-  background: url("http://s.files.c-f.com/CF_logo.png") 0 0 no-repeat; }
+  margin-left: 0.26667rem; }
+
+.CF_logo_pic {
+  width: 100%;
+  height: 100%; }
 
 .logo_name {
-  width: 100px;
-  height: 64px;
-  line-height: 64px;
-  font-size: 18px;
+  width: auto;
+  height: 1.73333rem;
+  line-height: 1.73333rem;
+  font-size: 0.48rem;
   float: left;
-  margin-left: 10px; }
+  margin-left: 0.26667rem; }
 
+/* 分享header、footer end*/
 .clearboth {
   clear: both; }
 
-a, button, input, li {
-  -webkit-tap-highlight-color: transparent; }
+/* detail.component&&wemedia.component */
+.text_box {
+  width: 8.93333rem;
+  margin: 0 auto 2.53333rem; }
 
-/* 清除部分机器自带效果 */
-/*px转换rem*/
-/*@function pxTorem($px,$browser-default-font-size){
-  @return $px / $browser-default-font-size * 1rem;
-}*/
-/*
-@function pxTorem( $px ){
-  @return $px*750/$designWidth/75 + rem; //这句是不是感觉很熟悉 这句其实跟上面的那段js是对应的
-}
-$designWidth : 750; //750设计图*/
+.text_title {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  font-size: 0.53333rem;
+  color: #333333;
+  line-height: 150%; }
+  .text_title span {
+    display: inline-block;
+    margin-right: 0.26667rem;
+    font-size: 0.37333rem;
+    color: #999999; }
+  .text_title p {
+    margin: 0.4rem 0 0.26667rem; }
+
+.text_con {
+  width: 100%;
+  height: auto;
+  padding: 0.13333rem 0;
+  margin: 0.13333rem auto;
+  color: #333333;
+  border-top: 0.02667rem #d9d9d9 solid; }
+  .text_con p {
+    font-size: 0.48rem;
+    line-height: 160%;
+    text-indent: 0.93333rem;
+    overflow: hidden;
+    margin: 0.5rem 0; }
+  .text_con .p_img, .text_con .p_video {
+    text-indent: 0;
+    text-align: center; }
+  .text_con .p_img img {
+    width: 100%; }
+  .text_con a {
+    font-size: 0.48rem;
+    color: #db3632;
+    text-decoration: underline; }
+
+/* detail.component&&wemedia.component end */
+/* coach-detail.component */
+.con_width {
+  width: 8.93333rem;
+  margin: 0 auto 2.66667rem; }
+
+.user_box {
+  width: 100%;
+  overflow: hidden; }
+
+.page_title {
+  width: 100%;
+  height: auto;
+  padding: 0.53333rem 0;
+  background: url("http://s.files.c-f.com/point.png") 0 1.06667rem repeat-x; }
+  .page_title span {
+    display: block;
+    width: 3.2rem;
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    margin: 0 auto;
+    font-size: 0.53333rem;
+    text-align: center;
+    background-color: #ffffff; }
+
+.part_title {
+  width: 100%;
+  height: 1.06667rem;
+  margin: 0.53333rem 0 0.53333rem;
+  overflow: hidden;
+  border-bottom: 0.02667rem #d9d9d9 solid; }
+  .part_title div {
+    float: left; }
+  .part_title .bar_left {
+    width: 1.06667rem;
+    height: 1.09333rem;
+    background: url("http://s.files.c-f.com/title_ball.jpg") 0 0 no-repeat; }
+  .part_title .bar_border {
+    width: 60%;
+    height: 1.06667rem;
+    line-height: 1.06667rem; }
+  .part_title .bar_middle {
+    width: auto;
+    height: 1.06667rem;
+    font-size: 0.42667rem;
+    background-color: #f2f2f2;
+    color: #333333;
+    padding: 0 0.26667rem; }
+  .part_title .bar_right {
+    width: 2.34667rem;
+    height: 1.06667rem;
+    background: url("http://s.files.c-f.com/title_end.jpg") 0 0 no-repeat; }
+
 .part_box {
   width: 100%;
   overflow: hidden;
   margin-bottom: 0.8rem; }
   .part_box p {
-    font-size: 16px;
+    font-size: 0.42667rem;
     line-height: 160%;
     text-indent: 0.85333rem;
     margin: 0.5rem 0; }
+
+.member_header {
+  width: 34%;
+  height: 4.26667rem;
+  float: left; }
+  .member_header img {
+    width: 3.2rem;
+    height: 4.26667rem; }
+
+.info_list, #coach_info_list {
+  width: 65%;
+  height: auto;
+  border: 0.02667rem #d9d9d9 solid;
+  float: left;
+  border-bottom: none; }
+  .info_list li, #coach_info_list li {
+    border-bottom: 0.02667rem #d9d9d9 solid;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    height: 1.04rem;
+    line-height: 1.04rem;
+    padding: 0 0.26667rem;
+    font-size: 0.42667rem; }
+    .info_list li b, #coach_info_list li b {
+      font-size: 0.42667rem; }
+
+.news_box {
+  display: block;
+  width: 8.26667rem;
+  height: 6.21333rem;
+  overflow: hidden;
+  float: left;
+  position: relative;
+  margin: 0 0.26667rem 0.26667rem 0; }
+  .news_box img {
+    width: 8.26667rem;
+    height: 6.21333rem; }
+
+.text_bg {
+  display: block;
+  font-size: 0.37333rem;
+  position: absolute;
+  bottom: 0;
+  width: 8.26667rem;
+  height: 1.33333rem;
+  line-height: 1.33333rem;
+  padding: 0 0.4rem;
+  background-color: #000000;
+  color: #ffffff;
+  opacity: 0.7;
+  overflow: hidden; }
+  .text_bg:hover {
+    opacity: 0.85;
+    color: #ffff00; }
+
+.bt_play {
+  display: block;
+  width: 1.70667rem;
+  height: 1.70667rem;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  background: url("http://s.files.c-f.com/bt_play.png") 0 0 no-repeat; }
+
+.bt_close {
+  display: block;
+  width: 1.06667rem;
+  height: 1.06667rem;
+  position: absolute;
+  top: 0.26667rem;
+  right: 0.26667rem;
+  background: url("http://s.files.c-f.com/close.png") 0 0 no-repeat; }
+  .bt_close:hover {
+    background-position: -1.06667rem 0; }
+
+/* coach-detail.component end */
+/* player-detail.component */
+.con_width {
+  width: 8.93333rem;
+  margin: 0 auto 2.66667rem; }
+
+.user_box {
+  width: 100%;
+  overflow: hidden; }
+
+.page_title {
+  width: 100%;
+  height: auto;
+  padding: 0.53333rem 0;
+  background: url("http://s.files.c-f.com/point.png") 0 1.06667rem repeat-x; }
+  .page_title span {
+    display: block;
+    width: 3.2rem;
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    margin: 0 auto;
+    font-size: 0.53333rem;
+    text-align: center;
+    background-color: #ffffff; }
+
+.part_title {
+  width: 100%;
+  height: 1.06667rem;
+  margin: 0.53333rem 0 0.53333rem;
+  overflow: hidden;
+  border-bottom: 0.02667rem #d9d9d9 solid; }
+  .part_title div {
+    float: left; }
+  .part_title .bar_left {
+    width: 1.06667rem;
+    height: 1.09333rem;
+    background: url("http://s.files.c-f.com/title_ball.jpg") 0 0 no-repeat; }
+  .part_title .bar_border {
+    width: 60%;
+    height: 1.06667rem;
+    line-height: 1.06667rem; }
+  .part_title .bar_middle {
+    width: auto;
+    height: 1.06667rem;
+    font-size: 0.42667rem;
+    background-color: #f2f2f2;
+    color: #333333;
+    padding: 0 0.26667rem; }
+  .part_title .bar_right {
+    width: 2.34667rem;
+    height: 1.06667rem;
+    background: url("http://s.files.c-f.com/title_end.jpg") 0 0 no-repeat; }
+
+.part_box {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 0.8rem; }
+  .part_box p {
+    font-size: 0.42667rem;
+    line-height: 160%;
+    text-indent: 0.85333rem;
+    margin: 0.5rem 0; }
+
+.member_header {
+  width: 34%;
+  height: 4.26667rem;
+  float: left; }
+  .member_header img {
+    width: 3.2rem;
+    height: 4.26667rem; }
+
+.info_list {
+  width: 65%;
+  height: auto;
+  border: 0.02667rem #d9d9d9 solid;
+  float: left;
+  border-bottom: none; }
+  .info_list li {
+    border-bottom: 0.02667rem #d9d9d9 solid;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    height: 1.38667rem;
+    line-height: 1.38667rem;
+    padding: 0 0.26667rem;
+    font-size: 0.42667rem; }
+    .info_list li b {
+      font-size: 0.48rem; }
+
+.info_other {
+  width: 100%;
+  height: auto;
+  border: 0.02667rem #d9d9d9 solid;
+  margin-top: 0.53333rem; }
+  .info_other li {
+    border-bottom: 0.02667rem #d9d9d9 solid;
+    overflow: hidden;
+    background-color: #f2f2f2; }
+    .info_other li span {
+      display: block;
+      float: left;
+      height: 1.6rem;
+      line-height: 1.6rem; }
+    .info_other li .list1 {
+      font-size: 0.42667rem;
+      background-color: #bababa;
+      width: 30%;
+      padding-right: 0.4rem;
+      text-align: right;
+      color: #ffffff; }
+    .info_other li .list2 {
+      font-size: 0.42667rem;
+      background-color: #f2f2f2;
+      width: 60%;
+      padding-left: 0.4rem;
+      text-align: left;
+      color: #000000; }
+
+.news_box {
+  display: block;
+  width: 8.26667rem;
+  height: 6.21333rem;
+  overflow: hidden;
+  float: left;
+  position: relative;
+  margin: 0 0.26667rem 0.26667rem 0; }
+  .news_box img {
+    width: 8.26667rem;
+    height: 6.21333rem; }
+
+.text_bg {
+  display: block;
+  font-size: 0.37333rem;
+  position: absolute;
+  bottom: 0;
+  width: 8.26667rem;
+  height: 1.33333rem;
+  line-height: 1.33333rem;
+  padding: 0 0.4rem;
+  background-color: #000000;
+  color: #ffffff;
+  opacity: 0.7;
+  overflow: hidden; }
+  .text_bg:hover {
+    opacity: 0.85;
+    color: #ffff00; }
+
+.bt_play {
+  display: block;
+  width: 1.70667rem;
+  height: 1.70667rem;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  background: url("http://s.files.c-f.com/bt_play.png") 0 0 no-repeat; }
+
+.bt_close {
+  display: block;
+  width: 1.06667rem;
+  height: 1.06667rem;
+  position: absolute;
+  top: 0.26667rem;
+  right: 0.26667rem;
+  background: url("http://s.files.c-f.com/close.png") 0 0 no-repeat; }
+  .bt_close:hover {
+    background-position: -1.06667rem 0; }
+
+.black_bg {
+  width: 100%;
+  height: 17.06667rem;
+  background-color: #000000;
+  position: fixed;
+  _position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -8.53333rem;
+  z-index: 999; }
+  .black_bg .video_show {
+    width: 28.45333rem;
+    height: 16rem;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+    margin: 0.53333rem auto; }
+
+/* palyer-detail.component end */
+/* elearing-video-detail.component */
+.video {
+  width: 100%;
+  height: auto;
+  margin: 0.13333rem 0 0.8rem 0;
+  position: relative; }
+
+#video {
+  width: 100%; }
+
+.item {
+  width: 8.93333rem;
+  height: 0.8rem;
+  font-size: 0.4rem;
+  font-weight: bold;
+  line-height: 0.8rem;
+  margin: 0 auto;
+  padding-bottom: 0.32rem;
+  border-bottom: 0.02667rem solid #d9d9d9; }
+
+.content {
+  width: 8.93333rem;
+  margin: 0 auto;
+  padding: 0.4rem 0 0.53333rem;
+  padding-bottom: 1.33333rem;
+  font-size: 0.37333rem; }
+  .content ul {
+    width: 49.5%;
+    display: inline-block; }
+    .content ul li {
+      height: 1.06667rem;
+      line-height: 1.06667rem;
+      margin: 0.26667rem 0; }
+    .content ul span {
+      display: inline-block;
+      font-size: 0.37333rem;
+      margin-top: 0.05333rem; }
+    .content ul i {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: url("http://s.files.c-f.com/select.jpg") 0 0 no-repeat; }
+  .content p {
+    text-indent: 0.64rem; }
+
+.relative {
+  position: relative; }
+
+.absolute {
+  position: absolute;
+  top: 50%;
+  margin-top: -2.66667rem; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.right-i {
+  float: right;
+  margin: 0.32rem 24% 0 0.53333rem; }
+
+.left-i {
+  float: left;
+  margin: 0.32rem 0.53333rem 0 24%; }
+
+.last {
+  padding-bottom: 2.66667rem; }
+
+/*背景*/
+.bg {
+  width: 100%;
+  height: 5.33333rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #000000; }
+
+#load {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -0.85333rem;
+  margin-left: -0.85333rem; }
+
+/*判罚决定*/
+.true img {
+  display: block; }
+
+.false img {
+  display: none; }
+
+/*越位*/
+#yuewei, #yuewei-pic {
+  width: 100%; }
+  #yuewei li, #yuewei li, #yuewei-pic li, #yuewei-pic li {
+    width: 50%;
+    height: auto;
+    display: inline-block;
+    float: left; }
+
+#yuewei li {
+  text-align: center; }
+  #yuewei li span {
+    margin-top: 0.05333rem;
+    padding: 0 0.21333rem; }
+  #yuewei li i {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.21333rem; }
+
+/*越位有图*/
+#yuewei-pic div {
+  text-align: center; }
+  #yuewei-pic div i {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.21333rem; }
+
+#yuewei-pic span {
+  vertical-align: middle;
+  padding: 0 0.21333rem; }
+
+#yuewei-pic .img {
+  display: block;
+  width: 80%;
+  margin: 0 auto; }
+
+.content_last {
+  margin-bottom: 2.66667rem; }
+
+/* elearing-video-detail.component end */
+/* elearing-aninmate-detail.component */
+.bg1, .bg2, .bg3 {
+  width: 100%;
+  position: absolute;
+  background-color: #000000; }
+
+.bg1 {
+  height: 200px;
+  left: 0;
+  top: 0; }
+
+.bg2, .bg3 {
+  height: 200px;
+  top: 200px;
+  left: 0; }
+
+#load1, #load2, #load3 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -32px;
+  margin-left: -32px; }
+
+/* elearing-animate-detail.component end */
 
 /*# sourceMappingURL=public.css.map */

@@ -8,7 +8,7 @@
   @return (($px / $base-font-size) * 1)+rem;
 }
 .con_width{
-  width:96%;
+  width:pxTorem(335);
   margin:0 auto pxTorem(100);
 }
 .user_box{
@@ -84,8 +84,8 @@
     border-bottom:pxTorem(1) #d9d9d9 solid;
     overflow:hidden;
     background-color:#f2f2f2;
-    height:pxTorem(39);
-    line-height:pxTorem(39);
+    height:pxTorem(40);
+    line-height:pxTorem(49);
     padding:0 pxTorem(10);
     font-size: pxTorem(16);
     b{
