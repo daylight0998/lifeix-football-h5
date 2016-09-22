@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>立方体育 - 中国足球网</title>
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
+<meta name="format-detection" content="telephone=no,email=no" />
+	<style type="text/css">
+		html, body { min-width:320px; height:100%; font-family: "Microsoft yahei", " Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif; -ms-text-size-adjust:100%; -webkit-text-size-adjust: 100% }
+		* {padding:0; margin:0 }
+		img {border:none}
+		a {text-decoration:none; text-underline:none }
+		ul, li { padding:0; margin:0; list-style:none }
+		.container {width:94%;margin:0 auto 20px;}
+		.text_title { width:100%; height:auto; padding:10px 0; margin:0 auto 0; font-size: 20px; color: #333333; line-height: 150% }
+		.text_title .btn_share {margin-left:20px; cursor:pointer;width:26px;height:26px; display:inline-block; background:url("http://s.files.c-f.com/static/images/btn_share.jpg") 0 0 no-repeat;}
+		.text_con {width:100%; height:auto; padding:10px 0; margin:0 auto 30px; color:#333333; font-size:16px; border-top:1px #d9d9d9 solid }
+		.text_con p { font-size:16px; line-height:140%; overflow: hidden }
+		.text_con .p_img, .text_con .p_video { text-indent: 0; text-align: center }
+		.text_con .p_img img { max-width:100%;background-color:#3573ff;}
+		.text_con a { font-size:24px; color:#db3632; text-decoration:underline }
+		.text_con .p_video {margin-top:10px;overflow:hidden;}
+		.video_box {width:100%;height:auto;float:left;position:relative;margin:10px auto;overflow:hidden;cursor:pointer}
+		.video_box .play_group img { width:100%; height:100%;}
+		.video_box .play_group span { display:block; width:50px; height:50px; position:absolute; top:50%; left:50%; margin-left:-25px; margin-top:-25px; background:url("http://s.files.c-f.com/btn_play.png") 0 0 no-repeat; background-size: cover;}
+		.video_box .loading_group {width:100%; height:100%; display:none; background: #000000 url("http://s.files.c-f.com/www/images/loading_b.gif") no-repeat scroll 50% 50%;}
+		.video_box video { width:100%; height:100%; display:none;}
+		.do_loading { width: 100%; position: fixed; top: 30%; color: #666; text-align: center; font-size: 16px }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="train_main">
+			<script id="train" type="text/template">
+          {@each list as it}
+              <li>
+                 <div class="text_title">
+					${it.title}
+					{@if it.subTitle}
+						- ${it.subTitle}
+					{@/if}
+					<a class="btn_share" data-id="${it.id}" data-title="${it.title}" data.subTitle="${it.subTitle}">&nbsp;</a>
+				 </div>
+                 <div class="text_con">
+				 {@if it.text}
+					$${it.text}
+				 {@/if}
+				 {@if it.animation}
+							<div class="p_video">
+								<div class="video_box" id="box_video_${it.id}" data-imagePath="${imgPrefix + it.animation + videoSuffix + videoThumbnail}" data-videoPath="${videoPrefix + it.animation + videoSuffix}">
+									<div class="play_group">
+										<img src="${imgPrefix + it.animation + videoSuffix + videoThumbnail}" />
+										<span></span>
+									</div>
+									<div class="loading_group">
+									</div>
+								</div>
+							</div>
+    		             {@/if}
+    	               {@if it.images}
+    		                 <p class="p_img">
+    		                      {@each it.images as item}
+    		                        <img src="${imgPrefix+item}"/>
+    		                      {@/each}
+    		                  </p>
+    		             {@/if}
+                {@if it.videos}
+                    	<div class="p_video">
+						   {@each it.videos as item}
+							  <div class="video_box" id="box_video_${item.id}" data-imagePath="${imgPrefix + item.imagePath}" data-videoPath="${videoPrefix + item.videoPath + videoSuffix}">
+								 	<div class="play_group">
+										<img src="${imgPrefix + item.imagePath}" />
+										<span></span>
+									</div>
+									<div class="loading_group">
+									</div>
+							  </div>
+						   {@/each}
+                    	</div>
+                     {@/if}
+                 </div>
+              </li>
+          {@/each}
+      </script>
+		</ul>
+		<div class="do_loading">
+			<span>正在努力加载...</span>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="http://s.files.c-f.com/static/js/juicer.js"></script>
+<script type="text/javascript" src="http://s.files.c-f.com/static/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://s.files.c-f.com/static/js/elearning/training/articles.js?v=201608041735"></script>
+
+</html>

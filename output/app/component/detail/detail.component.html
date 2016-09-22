@@ -1,0 +1,28 @@
+<div *ngIf="post" class="per100_bg">
+  <div class="header_con">
+    <a class="CF_logo" href="" title="中国足球网">
+      <img class="CF_logo_pic" src="http://s.files.c-f.com/CF_logo.png" />
+    </a>
+    <span>中国足球网</span>
+  </div>
+  <div class="text_box">
+    <div class="text_title">
+      <p>{{post.title}}</p>
+      <span>{{post.createTime|df:'yyyy-MM-dd HH:mm'}}</span>
+      <span>{{post.source}}</span>
+    </div>
+    <div [innerHTML]="postContent" class="text_con">
+
+    </div>
+  </div>
+  <!-- APP下载提示 -->
+  <div class="download_app">
+    <div class="APP_logo"><img src="http://s.files.c-f.com/APP_logo.png"/></div>
+    <div class="logo_name">
+      <b>中国足球网</b>
+    </div>
+    <img class="bg_yellow" src="http://s.files.c-f.com/share_btn.png" />
+    <a href="http://www.c-f.com/download">立即下载</a>
+    <span>&nbsp;</span>
+  </div>
+</div>
