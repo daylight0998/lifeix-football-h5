@@ -1,4 +1,4 @@
-import { Component, OnInit,Pipe } from '@angular/core';
+import { Component, OnInit,Pipe ,NgZone} from '@angular/core';
 import { RouteParams } from '@angular/router-deprecated';
 import {PlayerApi} from '../../api/PlayerApi';
 import {LikesApi} from '../../api/LikesApi';
@@ -7,6 +7,7 @@ import {Player,Like} from '../../api/model/models';
 import {Global} from '../../shared/global';
 import {DateFormatPipe} from '../../utils/date-format-pipe';
 import {environment} from '../../environment';
+import {Toolkit} from '../../utils/useful';
 
 @Component({
   templateUrl: 'app/component/player/player-detail.component.html'+environment.fileVersion,
@@ -24,13 +25,19 @@ export class PlayerDetailComponent implements OnInit {
 	hideVideo:boolean =true;
 	currVideo;
 	level:number;
-	constructor(private playerApi:PlayerApi,private likesApi:LikesApi,private routeParams: RouteParams,public global:Global,private titleService: Title) { 
+  isApp:boolean = false;
+
+  constructor(private ngZone:NgZone,private playerApi:PlayerApi,private likesApi:LikesApi,private routeParams: RouteParams,public global:Global,private titleService: Title) {
 		let id  = routeParams.get("id");
 		let l = routeParams.get("level");
 
 		this.playerId = Number(id);
 		this.level = Number(l);
 		this.prefixImg = global.prefixImg;
+
+    this.ngZone.run(() => {
+      this.isApp = Toolkit.isApp();
+    });
 	}
 
 	playerDetail(){

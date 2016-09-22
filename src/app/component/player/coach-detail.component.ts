@@ -1,4 +1,4 @@
-import { Component, OnInit,Pipe } from '@angular/core';
+import { Component, OnInit,Pipe ,NgZone } from '@angular/core';
 import { RouteParams,Router } from '@angular/router-deprecated';
 import {PlayerApi} from '../../api/PlayerApi';
 import {LikesApi} from '../../api/LikesApi';
@@ -7,6 +7,7 @@ import {Coach,Like} from '../../api/model/models';
 import {Global} from '../../shared/global';
 import {Title} from '@angular/platform-browser';
 import {environment} from '../../environment';
+import {Toolkit} from '../../utils/useful';
 
 @Component({
   templateUrl: 'app/component/player/coach-detail.component.html'+environment.fileVersion,
@@ -22,8 +23,9 @@ export class CoachDetailComponent implements OnInit {
 	prefixImg;
 	like:Like;
 	routeName:string;
+  isApp:boolean = false;
 
-	constructor(router: Router,private playerApi:PlayerApi,private likesApi:LikesApi,private routeParams: RouteParams,public global:Global,private titleService: Title) {
+	constructor(private ngZone:NgZone,router: Router,private playerApi:PlayerApi,private likesApi:LikesApi,private routeParams: RouteParams,public global:Global,private titleService: Title) {
 
 		let id  = routeParams.get("id");
 		this.coachId = Number(id);
@@ -31,7 +33,12 @@ export class CoachDetailComponent implements OnInit {
 
 		this.routeName = router.root.currentInstruction.component.routeName;
 		//console.log(routeName);
-	}
+
+    this.ngZone.run(() => {
+      this.isApp = Toolkit.isApp();
+    });
+
+  }
 
 	coachDetail(){
 		if(this.routeName.indexOf('Leader')>=0) {

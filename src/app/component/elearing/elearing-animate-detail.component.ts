@@ -31,7 +31,7 @@ export class ElearingAnimateDetailComponent implements OnInit {
 	videoPath:string;
 	videoEle;
 
-	constructor(private params:RouteParams,private elearingApi: ElearningApi,public global:Global,private renderer:Renderer,private titleService: Title) { 
+	constructor(private params:RouteParams,private elearingApi: ElearningApi,public global:Global,private renderer:Renderer,private titleService: Title) {
 		this.imgPrefix = global.prefixImg;
 		this.subjectId = params.get('subjectId');
 		this.categoryId = params.get("categoryId");
@@ -119,7 +119,7 @@ export class ElearingAnimateDetailComponent implements OnInit {
 			this.hidePop();
 			this.videoEle.play();
 		}
-		
+
 		//console.log(this.isVideoShow +" show ");
 	}
 
@@ -132,14 +132,14 @@ export class ElearingAnimateDetailComponent implements OnInit {
 
 	videoProcess(event){
 		if(event.keyCode==37) {
-			this.videoEle.currentTime-=1/12;	
+			this.videoEle.currentTime-=1/12;
 		}else if(event.keyCode==39) {
 			this.videoEle.currentTime+=1/12;
 		}
 	}
 
   	ngOnInit() {
-		this.getVideoDetail();	
+		this.getVideoDetail();
 		this.getPagePre();
 		this.getPageNext();
   	}

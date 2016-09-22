@@ -1,5 +1,5 @@
 <template [ngIf]="player">
-  <div class="header_con">
+  <div *ngIf="!isApp"  class="header_con">
     <a class="CF_logo" href="" title="中国足球网">
       <img class="CF_logo_pic" src="http://s.files.c-f.com/CF_logo.png" />
     </a>
@@ -7,11 +7,11 @@
   </div>
   <div class="con_width">
     <!-- 教练简历 -->
-    <div class="page_title"></div>
-    <div class="part_box">
+    <div *ngIf="!isApp"  class="page_title"></div>
+    <div *ngIf="!isApp"  class="part_box">
       <div class="user_box">
         <div class="member_header">
-          <img alt="{{player.name}}" src="{{prefixImg}}{{player.avatar}}?imageView/1/w/300/h/400" />
+          <img alt="{{player.name}}" src="{{prefixImg}}{{player.avatar}}?imageView/1/w/120/h/160" />
         </div>
         <ul class="info_list" id="coach_info_list">
           <li><b>{{player.name}}</b></li>
@@ -27,7 +27,7 @@
     </div>
     <!-- 执教生涯 -->
     <template [ngIf]="player.introduce">
-      <div class="part_title">
+      <div *ngIf="!isApp"  class="part_title">
         <div class="bar_left">&nbsp;</div>
         <div class="bar_border">
           <div class="bar_middle"></div>
@@ -38,7 +38,7 @@
     </template>
   </div>
   <!-- APP下载提示 -->
-  <div class="download_app">
+  <div *ngIf="!isApp"  class="download_app">
     <div class="APP_logo"><img src="http://s.files.c-f.com/APP_logo.png"/></div>
     <div class="logo_name">
       <b>中国足球网</b>

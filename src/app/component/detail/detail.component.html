@@ -1,5 +1,5 @@
 <div *ngIf="post" class="per100_bg">
-  <div class="header_con">
+  <div *ngIf="!isApp" class="header_con">
     <a class="CF_logo" href="" title="中国足球网">
       <img class="CF_logo_pic" src="http://s.files.c-f.com/CF_logo.png" />
     </a>
@@ -16,7 +16,7 @@
     </div>
   </div>
   <!-- APP下载提示 -->
-  <div class="download_app">
+  <div *ngIf="!isApp" class="download_app">
     <div class="APP_logo"><img src="http://s.files.c-f.com/APP_logo.png"/></div>
     <div class="logo_name">
       <b>中国足球网</b>

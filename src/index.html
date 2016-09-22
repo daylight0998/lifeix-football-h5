@@ -70,7 +70,14 @@
 </script>
 
 <script>
-//  var ua = window.navigator.userAgent;
+  var ua = window.navigator.userAgent;
+  if ((ua).indexOf("LiFangSport") == -1 ) {
+    console.log("h5");
+  } else {
+    console.log("app");
+    $("#app_download").hide();
+    $(".header_con").hide();
+  }
 //  if (ua.match('(Android|webOS|iPhone|iPod|iPad|BlackBerry|Mobile)')) {
 //    $("#app_download").show();
 //  }

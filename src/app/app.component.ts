@@ -1,4 +1,4 @@
-import { Component,ApplicationRef } from '@angular/core';
+import { Component,ApplicationRef, OnInit, NgZone } from '@angular/core';
 import { FootballComponent} from './component/football.component';
 import { Router,RouteConfig,ROUTER_DIRECTIVES,ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {HomeComponent} from './component/home/home.component';
@@ -9,6 +9,7 @@ import {RefeerComponent, PlayerMaleComponent, PlayerFeMaleComponent, PlayerDetai
 import {DetailComponent} from './component/detail/detail.component';
 import {ElearingComponent,ElearingAnimateListComponent,ElearingTextListComponent,ElearingVideoListComponent,ElearingVidoDetailComponent,ElearingDownloadComponent,ElearingAnimateDetailComponent} from './component/elearing';
 
+import {Toolkit} from './utils/useful';
 import {environment} from './environment';
 
 @Component({
@@ -29,6 +30,17 @@ import {environment} from './environment';
   {path: "/video/:id", name: "VideoDetail", component: ElearingVidoDetailComponent},
   {path: "/animate/:id", name: "AnimateDetail", component: ElearingAnimateDetailComponent}
 ])
-export class AppComponent {
+export class AppComponent implements OnInit{
+  isApp : boolean = false;
 
+  constructor(private ngZone: NgZone) {
+    //console.log(Toolkit.isApp());
+    this.ngZone.run(() => {
+      this.isApp = Toolkit.isApp();
+    });
+    //console.log(this.isApp);
+
+  }
+  ngOnInit() {
+  }
 }
