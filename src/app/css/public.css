@@ -109,6 +109,11 @@ a, button, input, li {
 .clearboth {
   clear: both; }
 
+.loading_gif {
+  width: 1.70667rem;
+  height: 1.70667rem;
+  margin: 4.26667rem auto; }
+
 /* detail.component&&wemedia.component */
 .text_box {
   width: 8.93333rem;

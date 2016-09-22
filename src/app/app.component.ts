@@ -3,10 +3,6 @@ import { FootballComponent} from './component/football.component';
 import { Router,RouteConfig,ROUTER_DIRECTIVES,ROUTER_PROVIDERS} from '@angular/router-deprecated';
 import {HomeComponent} from './component/home/home.component';
 import {UserComponent} from './component/user/user.component';
-import {CompetitionComponent} from './component/competition/competition.component';
-import {WemediaComponent} from './component/wemedia/wemedia.component';
-import {ElearningComponent} from './component/elearning/elearning.component';
-import {StaffComponent} from './component/staff/staff.component';
 
 import {DownloadComponent} from './component/download';
 import {RefeerComponent, PlayerMaleComponent, PlayerFeMaleComponent, PlayerDetailComponent, CoachComponent,CoachDetailComponent} from './component/player';
@@ -24,19 +20,14 @@ import {environment} from './environment';
 @RouteConfig([
   {path: "/", name: "Home", component: HomeComponent},
   {path: "/user", name: "User", component: UserComponent},
-  { path: "/download", name: "Download", component: DownloadComponent },
-  { path: "/training/:id/text", name: "TrainingText", component: ElearingTextListComponent },
-  {path:"/news/detail/:id",name:"Detail",component:DetailComponent},
-  { path: "/player/detail/:id", name: "PlayDetail", component: PlayerDetailComponent },
-  { path: "/coach/detail/:id", name: "CoachDetail", component: CoachDetailComponent },
-  { path: "/leader/detail/:id", name: "LeaderDetail", component: CoachDetailComponent },
-  { path: "/video/:id", name: "VideoDetail", component: ElearingVidoDetailComponent},
-  { path: "/animate/:id", name: "AnimateDetail", component: ElearingAnimateDetailComponent},
-
-  {path: "/competition", name: "Competition", component: CompetitionComponent},
-  {path: "/wemedia", name: "Wemedia", component: WemediaComponent},
-  {path: "/staff", name: "Staff", component: StaffComponent},
-  {path: "/elearning", name: "Elearning", component: ElearningComponent}
+  {path: "/download", name: "Download", component: DownloadComponent},
+  {path: "/training/:id/text", name: "TrainingText", component: ElearingTextListComponent},
+  {path: "/news/detail/:id", name: "Detail", component: DetailComponent},
+  {path: "/player/detail/:id", name: "PlayDetail", component: PlayerDetailComponent},
+  {path: "/coach/detail/:id", name: "CoachDetail", component: CoachDetailComponent},
+  {path: "/leader/detail/:id", name: "LeaderDetail", component: CoachDetailComponent},
+  {path: "/video/:id", name: "VideoDetail", component: ElearingVidoDetailComponent},
+  {path: "/animate/:id", name: "AnimateDetail", component: ElearingAnimateDetailComponent}
 ])
 export class AppComponent {
 

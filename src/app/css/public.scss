@@ -124,6 +124,11 @@ a,button,input,li{
 .clearboth{
   clear:both;
 }
+.loading_gif {
+  width: pxTorem(64);
+  height: pxTorem(64);
+  margin: pxTorem(160) auto;
+}
 
 /* detail.component&&wemedia.component */
 .text_box{

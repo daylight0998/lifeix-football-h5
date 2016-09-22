@@ -37,20 +37,11 @@ const barrels: string[] = [
   'app/js',
   'app/component/home',
   'app/component/player',
-  //'app/component/football',
   'app/component/news',
   'app/component/detail',
-  //'app/component/event',
-  //'app/component/event/top12',
   'app/component/elearing',
-  //'app/component/etest',
-  //'app/component/yong',
   'app/component/download',
   'app/component/user',
-  'app/component/wemedia',
-  'app/component/staff',
-  'app/component/competition',
-  'app/component/elearning',
   /** @cli-barrel */
 ];
 
